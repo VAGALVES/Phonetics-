@@ -33,6 +33,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="Phonetics" />
 
+<!-- Anti-flash: aplica tema antes do CSS carregar -->
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('phonetics-theme');
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (theme === 'light') document.documentElement.classList.add('theme-light');
+  } catch(e) {}
+})();
+</script>
+
 <!-- Favicons & Icons -->
 <link rel="icon" type="image/png" sizes="32x32" href="icon-192.png" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -82,6 +93,40 @@
     --ease-out:cubic-bezier(0.2,0.8,0.2,1);
     --dur-fast:180ms; --dur-med:280ms;
     --shadow-card:0 1px 0 rgba(245,241,232,0.04) inset, 0 30px 60px -30px rgba(0,0,0,0.5);
+    --topbar-bg:rgba(10,18,32,0.72);
+    --modal-backdrop:rgba(5,8,15,0.78);
+    --bg-elev-soft:rgba(245,241,232,0.03);
+    --bg-elev-softer:rgba(245,241,232,0.02);
+  }
+
+  /* ─── TEMA LIGHT — paper editorial estilo magazine impresso ─── */
+  html.theme-light {
+    --ink:#F5F1E8; --ink-2:#ECE6D6; --ink-3:#DDD5BD; --ink-4:#C5BCA0;
+    --paper:#0A1220; --paper-80:rgba(10,18,32,0.85); --paper-60:rgba(10,18,32,0.62);
+    --paper-40:rgba(10,18,32,0.42); --paper-20:rgba(10,18,32,0.18);
+    --gold:#8C6D2E; --gold-soft:rgba(140,109,46,0.10); --gold-line:rgba(140,109,46,0.30);
+    --line:rgba(10,18,32,0.08); --line-strong:rgba(10,18,32,0.16);
+    --sage:#3F6E55; --sage-soft:rgba(63,110,85,0.10); --sage-line:rgba(63,110,85,0.32);
+    --amber:#8C6D2E; --amber-soft:rgba(140,109,46,0.10); --amber-line:rgba(140,109,46,0.30);
+    --terra:#9A4D2D; --terra-soft:rgba(154,77,45,0.10); --terra-line:rgba(154,77,45,0.32);
+    --shadow-card:0 1px 0 rgba(255,255,255,0.6) inset, 0 20px 40px -20px rgba(10,18,32,0.15);
+    --topbar-bg:rgba(245,241,232,0.78);
+    --modal-backdrop:rgba(245,241,232,0.78);
+    --bg-elev-soft:rgba(10,18,32,0.04);
+    --bg-elev-softer:rgba(10,18,32,0.025);
+  }
+
+  html.theme-light body::before { opacity:0.18; mix-blend-mode:multiply }
+  html.theme-light body::after {
+    background:radial-gradient(circle at center,rgba(140,109,46,0.05) 0%,rgba(140,109,46,0.01) 30%,transparent 60%)
+  }
+
+  /* Transição suave entre temas */
+  body, .topbar, .macro, .scard, .modal__panel, .modal__head, .modal__body,
+  .legend__item, .callout, .error, .phase, .slist__item, .example, .pair,
+  .modal__chip, .modal__compare, .modal__tip, .nicho, .audio-btn,
+  .btn-editorial, .topbar__version, .modal__close, .theme-toggle {
+    transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 280ms var(--ease-out);
   }
 
   *,*::before,*::after{box-sizing:border-box}
@@ -127,7 +172,7 @@
     transition:width 80ms linear;pointer-events:none}
 
   /* ─── TOPBAR ─── */
-  .topbar{position:sticky;top:0;z-index:40;background:rgba(10,18,32,0.72);
+  .topbar{position:sticky;top:0;z-index:40;background:var(--topbar-bg);
     backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
     border-bottom:1px solid var(--line)}
   .topbar__inner{display:flex;align-items:center;justify-content:space-between;
@@ -148,6 +193,20 @@
     letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-60);
     padding:var(--sp-2) var(--sp-3);border:1px solid var(--line-strong);
     border-radius:999px;white-space:nowrap}
+
+  /* ─── THEME TOGGLE ─── */
+  .topbar__actions{display:flex;align-items:center;gap:var(--sp-3)}
+  .theme-toggle{width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line-strong);background:transparent;color:var(--paper);
+    display:grid;place-items:center;cursor:pointer;position:relative;overflow:hidden;
+    flex-shrink:0}
+  .theme-toggle:hover{border-color:var(--gold);color:var(--gold)}
+  .theme-toggle__icon{width:16px;height:16px;position:absolute;
+    transition:opacity var(--dur-med) var(--ease-out),transform var(--dur-med) var(--ease-out)}
+  .theme-toggle__icon--sun{opacity:0;transform:rotate(-90deg) scale(0.4)}
+  html.theme-light .theme-toggle__icon--moon{opacity:0;transform:rotate(90deg) scale(0.4)}
+  html.theme-light .theme-toggle__icon--sun{opacity:1;transform:rotate(0) scale(1)}
+  @media(max-width:480px){.topbar__version{display:none}}
 
   /* ─── HERO ─── */
   .hero{padding-block:var(--sp-8) var(--sp-7);position:relative}
@@ -306,7 +365,7 @@
 
   /* ─── AUDIO BUTTON ─── */
   .audio-btn{width:36px;height:36px;border-radius:50%;
-    border:1px solid var(--line-strong);background:rgba(245,241,232,0.03);
+    border:1px solid var(--line-strong);background:var(--bg-elev-soft);
     color:var(--paper-60);display:grid;place-items:center;cursor:pointer;
     flex-shrink:0;transition:all var(--dur-fast)}
   .audio-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
@@ -323,7 +382,7 @@
     align-items:flex-end;justify-content:center}
   @media(min-width:720px){.modal{align-items:center;padding:var(--sp-5)}}
   .modal.is-open{display:flex}
-  .modal__backdrop{position:absolute;inset:0;background:rgba(5,8,15,0.78);
+  .modal__backdrop{position:absolute;inset:0;background:var(--modal-backdrop);
     backdrop-filter:blur(12px) saturate(120%);-webkit-backdrop-filter:blur(12px) saturate(120%);
     animation:fadeIn var(--dur-med) var(--ease-out)}
   .modal__panel{position:relative;background:var(--ink-2);
@@ -378,7 +437,7 @@
     margin-bottom:var(--sp-3);display:flex;align-items:center;gap:var(--sp-3)}
   .modal__block-eyebrow::before{content:"§";color:var(--gold);font-size:14px}
   .modal__tip{padding:var(--sp-4);border-left:2px solid var(--gold);
-    background:rgba(245,241,232,0.02);font-size:var(--fs-sm);color:var(--paper-80);
+    background:var(--bg-elev-softer);font-size:var(--fs-sm);color:var(--paper-80);
     line-height:1.65;border-radius:0 var(--r-sm) var(--r-sm) 0}
   .modal__compare{padding:var(--sp-4);background:var(--ink-2);border:1px solid var(--line);
     border-radius:var(--r-sm);font-size:var(--fs-sm);color:var(--paper-80);line-height:1.65}
@@ -487,7 +546,18 @@
         <div class="brand__name">Linguistic Lab</div>
       </div>
     </div>
-    <div class="topbar__version">v1.0 · Phonetics</div>
+    <div class="topbar__actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar entre tema claro e escuro" title="Alternar tema">
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <div class="topbar__version">v1.0 · Phonetics</div>
+    </div>
   </div>
 </header>
 
@@ -1213,6 +1283,34 @@ window.addEventListener('scroll', () => {
 
 renderGrids();
 computeStats();
+
+// ═══════════════════════════════════════════════════════════════
+//   THEME TOGGLE
+// ═══════════════════════════════════════════════════════════════
+const themeToggle = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement;
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+function setTheme(theme) {
+  if (theme === 'light') {
+    htmlEl.classList.add('theme-light');
+    themeColorMeta?.setAttribute('content', '#F5F1E8');
+  } else {
+    htmlEl.classList.remove('theme-light');
+    themeColorMeta?.setAttribute('content', '#0A1220');
+  }
+  try { localStorage.setItem('phonetics-theme', theme); } catch(e) {}
+}
+
+// Sincroniza meta theme-color com o estado inicial (já aplicado pelo anti-flash)
+if (htmlEl.classList.contains('theme-light')) {
+  themeColorMeta?.setAttribute('content', '#F5F1E8');
+}
+
+themeToggle.addEventListener('click', () => {
+  const isLight = htmlEl.classList.contains('theme-light');
+  setTheme(isLight ? 'dark' : 'light');
+});
 
 // Service Worker registration (PWA)
 if ('serviceWorker' in navigator) {

@@ -3,7 +3,7 @@
 //   Estratégia: Cache-first para assets estáticos
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE_NAME = 'phonetics-vs-v1.0.0';
+const CACHE_NAME = 'phonetics-vs-v1.1.0';
 const ASSETS = [
   './',
   './index.html',
