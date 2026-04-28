@@ -1,14 +1,15 @@
 {
-  "name": "Blocos Semânticos em Inglês",
-  "short_name": "Blocos EN",
-  "description": "VS Consulting - Material didático de Inglês para Brasileiros",
+  "name": "Fonética Inglesa para Brasileiros · VS Consulting",
+  "short_name": "Phonetics VS",
+  "description": "Framework editorial de fonética inglesa: 40 sons cartografados com áudio integrado e análise BR×EN.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0A1628",
-  "theme_color": "#0A1628",
+  "background_color": "#0A1220",
+  "theme_color": "#0A1220",
   "lang": "pt-BR",
+  "categories": ["education", "reference", "productivity"],
   "icons": [
     {
       "src": "icon-192.png",
@@ -23,10 +24,15 @@
       "purpose": "any"
     },
     {
-      "src": "icon-maskable.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ]
 }
