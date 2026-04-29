@@ -5,46 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0A1220" />
 
-<title>English Connectors & Compounds · VS Consulting</title>
-<meta name="description" content="Framework editorial de inglês intermediário-avançado: phrasal verbs, advérbios, conjunções, linking words e collocations curados por frequência COCA com áudio integrado." />
+<!-- SEO & Compartilhamento -->
+<title>Fonética Inglesa para Brasileiros · VS Consulting</title>
+<meta name="description" content="Framework editorial de fonética inglesa: 40 sons cartografados, análise BR×EN, áudio integrado e roadmap de estudo. Material premium para falantes nativos de português brasileiro." />
 <meta name="author" content="VS Consulting" />
-<meta name="keywords" content="phrasal verbs, advérbios, conjunções, linking words, collocations, inglês para brasileiros, COCA, IPA, vs consulting" />
+<meta name="keywords" content="fonética inglesa, IPA, alfabeto fonético internacional, inglês para brasileiros, pronúncia, sotaque, vs consulting" />
 
+<!-- Open Graph -->
 <meta property="og:type" content="article" />
-<meta property="og:title" content="English Connectors & Compounds · VS Consulting" />
-<meta property="og:description" content="A arquitetura conectiva do inglês — framework editorial com 370 entradas curadas por frequência COCA." />
+<meta property="og:title" content="Fonética Inglesa para Brasileiros · VS Consulting" />
+<meta property="og:description" content="A arquitetura sonora do inglês — framework editorial com 40 sons cartografados e análise BR×EN integrada." />
 <meta property="og:image" content="og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="VS Consulting Linguistic Lab" />
 
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="English Connectors & Compounds · VS Consulting" />
-<meta name="twitter:description" content="Framework editorial com 370 entradas curadas." />
+<meta name="twitter:title" content="Fonética Inglesa para Brasileiros · VS Consulting" />
+<meta name="twitter:description" content="Framework editorial com 40 sons cartografados." />
 <meta name="twitter:image" content="og-image.png" />
 
+<!-- PWA -->
 <link rel="manifest" href="manifest.json" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Connectors" />
+<meta name="apple-mobile-web-app-title" content="Phonetics" />
 
+<!-- Anti-flash: aplica tema antes do CSS carregar -->
 <script>
 (function(){
   try {
-    var saved = localStorage.getItem('connectors-theme');
+    var saved = localStorage.getItem('phonetics-theme');
     var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
     if (theme === 'light') document.documentElement.classList.add('theme-light');
   } catch(e) {}
 })();
 </script>
 
+<!-- Favicons & Icons -->
 <link rel="icon" type="image/png" sizes="32x32" href="icon-192.png" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
 <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -57,13 +64,14 @@
     --gold:#C9A35C; --gold-soft:rgba(201,163,92,0.12); --gold-line:rgba(201,163,92,0.28);
     --line:rgba(245,241,232,0.08); --line-strong:rgba(245,241,232,0.16);
 
-    --sage:#7FA889;
+    /* Sistema cromático tripartite — adaptado ao palette editorial */
+    --sage:#7FA889;      /* Existe em PT-BR */
     --sage-soft:rgba(127,168,137,0.10);
     --sage-line:rgba(127,168,137,0.32);
-    --amber:#C9A35C;
+    --amber:#C9A35C;     /* Aproximado — usa o gold do sistema */
     --amber-soft:rgba(201,163,92,0.10);
     --amber-line:rgba(201,163,92,0.32);
-    --terra:#C77B5C;
+    --terra:#C77B5C;     /* Novo / desafiador */
     --terra-soft:rgba(199,123,92,0.10);
     --terra-line:rgba(199,123,92,0.32);
 
@@ -91,6 +99,7 @@
     --bg-elev-softer:rgba(245,241,232,0.02);
   }
 
+  /* ─── TEMA LIGHT — paper editorial estilo magazine impresso ─── */
   html.theme-light {
     --ink:#F5F1E8; --ink-2:#ECE6D6; --ink-3:#DDD5BD; --ink-4:#C5BCA0;
     --paper:#0A1220; --paper-80:rgba(10,18,32,0.85); --paper-60:rgba(10,18,32,0.62);
@@ -112,9 +121,11 @@
     background:radial-gradient(circle at center,rgba(140,109,46,0.05) 0%,rgba(140,109,46,0.01) 30%,transparent 60%)
   }
 
-  body, .topbar, .entry-card, .modal__panel, .modal__head, .modal__body,
-  .filter-chip, .module-tab, .audio-btn, .theme-toggle,
-  .modal__chip, .modal__compare, .modal__tip {
+  /* Transição suave entre temas */
+  body, .topbar, .macro, .scard, .modal__panel, .modal__head, .modal__body,
+  .legend__item, .callout, .error, .phase, .slist__item, .example, .pair,
+  .modal__chip, .modal__compare, .modal__tip, .nicho, .audio-btn,
+  .btn-editorial, .topbar__version, .modal__close, .theme-toggle {
     transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 280ms var(--ease-out);
   }
 
@@ -136,19 +147,24 @@
     background:radial-gradient(circle at center,rgba(201,163,92,0.07) 0%,rgba(201,163,92,0.02) 30%,transparent 60%)}
 
   p{margin:0 0 var(--sp-4)}
+
   h1,h2,h3,h4,h5{margin:0;color:var(--paper);font-family:var(--font-display);
     font-weight:700;line-height:1.08;letter-spacing:-0.02em;
     font-variation-settings:"opsz" 48,"SOFT" 50}
   h1{font-size:var(--fs-hero);font-weight:900;letter-spacing:-0.03em;
     font-variation-settings:"opsz" 144,"SOFT" 40}
-  h2{font-size:var(--fs-4xl)} h3{font-size:var(--fs-2xl);font-weight:600}
+  h2{font-size:var(--fs-4xl)}
+  h3{font-size:var(--fs-2xl);font-weight:600}
   h4{font-size:var(--fs-xl);font-weight:600}
-  em,.italic{font-style:italic;color:var(--gold);font-variation-settings:"opsz" 144,"SOFT" 100}
+  em,.italic{font-style:italic;color:var(--gold);
+    font-variation-settings:"opsz" 144,"SOFT" 100}
   strong{color:var(--paper);font-weight:600}
   .eyebrow{font-family:var(--font-mono);font-size:var(--fs-2xs);font-weight:500;
     letter-spacing:0.18em;text-transform:uppercase;color:var(--paper-60)}
+
   .wrap{width:100%;max-width:var(--max-w);margin-inline:auto;
     padding-inline:var(--gutter);position:relative;z-index:2}
+
   :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 
   .progress{position:fixed;top:0;left:0;height:2px;width:0%;
@@ -165,7 +181,7 @@
   .brand__mark{width:32px;height:32px;border-radius:var(--r-sm);
     border:1px solid var(--gold-line);background:var(--gold-soft);
     display:grid;place-items:center;font-family:var(--font-display);
-    font-weight:900;font-size:12px;color:var(--gold);flex-shrink:0;font-style:italic}
+    font-weight:900;font-size:12px;color:var(--gold);flex-shrink:0}
   .brand__text{display:flex;flex-direction:column;min-width:0}
   .brand__kicker{font-family:var(--font-mono);font-size:var(--fs-3xs);
     letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
@@ -173,7 +189,12 @@
   .brand__name{font-family:var(--font-display);font-size:var(--fs-sm);
     font-weight:600;color:var(--paper);line-height:1.2;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar__version{font-family:var(--font-mono);font-size:var(--fs-3xs);
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-60);
+    padding:var(--sp-2) var(--sp-3);border:1px solid var(--line-strong);
+    border-radius:999px;white-space:nowrap}
 
+  /* ─── THEME TOGGLE ─── */
   .topbar__actions{display:flex;align-items:center;gap:var(--sp-3)}
   .theme-toggle{width:38px;height:38px;border-radius:50%;
     border:1px solid var(--line-strong);background:transparent;color:var(--paper);
@@ -185,10 +206,6 @@
   .theme-toggle__icon--sun{opacity:0;transform:rotate(-90deg) scale(0.4)}
   html.theme-light .theme-toggle__icon--moon{opacity:0;transform:rotate(90deg) scale(0.4)}
   html.theme-light .theme-toggle__icon--sun{opacity:1;transform:rotate(0) scale(1)}
-  .topbar__version{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-60);
-    padding:var(--sp-2) var(--sp-3);border:1px solid var(--line-strong);
-    border-radius:999px;white-space:nowrap}
   @media(max-width:480px){.topbar__version{display:none}}
 
   /* ─── HERO ─── */
@@ -199,10 +216,10 @@
   .hero__meta-item{display:inline-flex;align-items:center;gap:var(--sp-2)}
   .hero__meta-item::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
   .hero__meta-sep{width:1px;height:12px;background:var(--line-strong)}
-  .hero__title{margin-bottom:var(--sp-5);max-width:18ch}
+  .hero__title{margin-bottom:var(--sp-5);max-width:16ch}
   .hero__title .stanza{display:block}
   .hero__lead{font-family:var(--font-display);font-size:var(--fs-xl);font-weight:400;
-    line-height:1.5;color:var(--paper-80);max-width:54ch;margin-bottom:var(--sp-6);
+    line-height:1.5;color:var(--paper-80);max-width:52ch;margin-bottom:var(--sp-6);
     font-variation-settings:"opsz" 48,"SOFT" 60}
   .hero__tldr{border-left:2px solid var(--gold);padding-left:var(--sp-4);
     margin-bottom:var(--sp-6);max-width:62ch}
@@ -211,14 +228,16 @@
 
   .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3);
     margin-top:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--line)}
-  @media(min-width:720px){.stats{grid-template-columns:repeat(3,1fr);gap:var(--sp-5)}}
-  @media(min-width:1080px){.stats{grid-template-columns:repeat(6,1fr)}}
+  @media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr);gap:var(--sp-5)}}
   .stat{display:flex;flex-direction:column;gap:var(--sp-1)}
-  .stat__num{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.5rem);
+  .stat__num{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,2.75rem);
     font-weight:700;color:var(--paper);line-height:1;letter-spacing:-0.03em;
     font-variation-settings:"opsz" 144}
-  .stat__num--soon{color:var(--paper-40);font-style:italic;font-size:1.5rem;
-    font-variation-settings:"opsz" 144,"SOFT" 100}
+  .stat__num sub{font-size:0.5em;color:var(--gold);vertical-align:super;
+    margin-left:2px;font-weight:400}
+  .stat__num--sage{color:var(--sage)}
+  .stat__num--amber{color:var(--amber)}
+  .stat__num--terra{color:var(--terra)}
   .stat__label{font-family:var(--font-mono);font-size:var(--fs-3xs);
     letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-60);line-height:1.4}
 
@@ -232,22 +251,6 @@
   .section__lead{font-family:var(--font-display);font-size:var(--fs-lg);
     font-weight:400;color:var(--paper-80);max-width:62ch;line-height:1.55;
     font-variation-settings:"opsz" 48,"SOFT" 60}
-
-  /* ─── MODULE TABS ─── */
-  .module-tabs{display:flex;gap:var(--sp-2);overflow-x:auto;padding-block:var(--sp-2);
-    margin-bottom:var(--sp-5);scrollbar-width:none;-ms-overflow-style:none}
-  .module-tabs::-webkit-scrollbar{display:none}
-  .module-tab{padding:var(--sp-3) var(--sp-4);border:1px solid var(--line-strong);
-    border-radius:999px;font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.14em;text-transform:uppercase;color:var(--paper-60);
-    background:transparent;cursor:pointer;white-space:nowrap;flex-shrink:0;
-    display:inline-flex;align-items:center;gap:var(--sp-2);min-height:42px}
-  .module-tab:hover{border-color:var(--gold-line);color:var(--paper-80)}
-  .module-tab.is-active{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-  .module-tab__num{font-weight:600;opacity:0.7}
-  .module-tab__count{font-size:var(--fs-3xs);opacity:0.6;margin-left:var(--sp-1)}
-  .module-tab.is-soon{opacity:0.5;cursor:not-allowed}
-  .module-tab.is-soon:hover{border-color:var(--line-strong);color:var(--paper-60)}
 
   /* ─── CALLOUT ─── */
   .callout{background:var(--ink-2);border:1px solid var(--gold-line);
@@ -263,86 +266,102 @@
     color:var(--paper);margin-bottom:var(--sp-2);font-weight:600}
   .callout__content p{margin:0;font-size:var(--fs-sm);color:var(--paper-80);line-height:1.6}
 
-  /* ─── SEARCH + FILTERS ─── */
-  .controls{display:flex;flex-direction:column;gap:var(--sp-3);margin-bottom:var(--sp-5)}
-  .search{position:relative}
-  .search__input{width:100%;background:var(--bg-elev-soft);
-    border:1px solid var(--line-strong);border-radius:var(--r-sm);
-    padding:var(--sp-3) var(--sp-4) var(--sp-3) calc(var(--sp-4) + 22px);color:var(--paper);
-    font-family:var(--font-body);font-size:var(--fs-sm);min-height:44px;
-    transition:border-color var(--dur-fast)}
-  .search__input::placeholder{color:var(--paper-40)}
-  .search__input:focus{outline:none;border-color:var(--gold);background:var(--gold-soft)}
-  .search__icon{position:absolute;left:var(--sp-4);top:50%;
-    transform:translateY(-50%);color:var(--paper-40);pointer-events:none}
+  /* ─── LEGEND ─── */
+  .legend{display:grid;grid-template-columns:1fr;gap:var(--sp-3);margin-top:var(--sp-5)}
+  @media(min-width:720px){.legend{grid-template-columns:repeat(3,1fr);gap:var(--sp-4)}}
+  .legend__item{padding:var(--sp-5);border:1px solid var(--line);border-radius:var(--r-md);
+    background:var(--ink-2);transition:border-color var(--dur-med) var(--ease-out)}
+  .legend__item--sage{border-color:var(--sage-line);background:linear-gradient(180deg,var(--sage-soft) 0%,transparent 100%)}
+  .legend__item--amber{border-color:var(--amber-line);background:linear-gradient(180deg,var(--amber-soft) 0%,transparent 100%)}
+  .legend__item--terra{border-color:var(--terra-line);background:linear-gradient(180deg,var(--terra-soft) 0%,transparent 100%)}
+  .legend__head{display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)}
+  .legend__dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .legend__dot--sage{background:var(--sage);box-shadow:0 0 12px var(--sage)}
+  .legend__dot--amber{background:var(--amber);box-shadow:0 0 12px var(--amber)}
+  .legend__dot--terra{background:var(--terra);box-shadow:0 0 12px var(--terra)}
+  .legend__count{font-family:var(--font-display);font-size:var(--fs-2xl);font-weight:700;
+    line-height:1;font-variation-settings:"opsz" 144}
+  .legend__count--sage{color:var(--sage)}
+  .legend__count--amber{color:var(--amber)}
+  .legend__count--terra{color:var(--terra)}
+  .legend__total{font-family:var(--font-mono);font-size:var(--fs-3xs);color:var(--paper-40);
+    letter-spacing:0.14em;margin-left:var(--sp-2)}
+  .legend__title{font-family:var(--font-display);font-size:var(--fs-base);font-weight:600;
+    color:var(--paper);margin-bottom:var(--sp-2)}
+  .legend__desc{font-size:var(--fs-xs);color:var(--paper-60);line-height:1.55;margin:0}
 
-  .filters{display:flex;gap:var(--sp-2);flex-wrap:wrap}
-  .filter-chip{padding:var(--sp-2) var(--sp-3);border:1px solid var(--line-strong);
-    border-radius:999px;font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.12em;text-transform:uppercase;color:var(--paper-60);
-    background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:var(--sp-2);
-    min-height:34px}
-  .filter-chip:hover{border-color:var(--gold-line);color:var(--paper-80)}
-  .filter-chip.is-active{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
-  .filter-chip__dot{width:6px;height:6px;border-radius:50%}
-  .filter-chip__dot--sage{background:var(--sage)}
-  .filter-chip__dot--amber{background:var(--amber)}
-  .filter-chip__dot--terra{background:var(--terra)}
+  /* ─── SOUND GROUP ─── */
+  .sgroup{margin-bottom:var(--sp-7)}
+  .sgroup__head{display:flex;align-items:baseline;gap:var(--sp-4);margin-bottom:var(--sp-5);
+    padding-bottom:var(--sp-3);border-bottom:1px solid var(--line)}
+  .sgroup__title{font-family:var(--font-display);font-size:var(--fs-2xl);font-weight:600;
+    color:var(--paper);letter-spacing:-0.02em;font-variation-settings:"opsz" 48}
+  .sgroup__meta{font-family:var(--font-mono);font-size:var(--fs-3xs);
+    letter-spacing:0.18em;text-transform:uppercase;color:var(--paper-40);margin-left:auto}
 
-  .results-count{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-40);
-    margin-bottom:var(--sp-4)}
+  .sgroup__sub{font-family:var(--font-mono);font-size:var(--fs-3xs);letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--gold);margin:var(--sp-5) 0 var(--sp-3);
+    display:flex;align-items:center;gap:var(--sp-3)}
+  .sgroup__sub::before{content:"";width:24px;height:1px;background:var(--gold)}
 
-  /* ─── ENTRY CARDS GRID ─── */
-  .entries{display:grid;grid-template-columns:1fr;gap:var(--sp-3)}
-  @media(min-width:720px){.entries{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:1080px){.entries{grid-template-columns:repeat(3,1fr)}}
+  /* ─── SOUND CARDS GRID ─── */
+  .sgrid{display:grid;gap:var(--sp-3);
+    grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  @media(min-width:720px){.sgrid{gap:var(--sp-4);
+    grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
 
-  .entry-card{padding:var(--sp-4) var(--sp-5);background:var(--ink-2);
-    border:1px solid var(--line);border-radius:var(--r-md);cursor:pointer;
-    text-align:left;width:100%;display:flex;flex-direction:column;gap:var(--sp-3);
-    position:relative;min-height:130px}
-  .entry-card:hover{transform:translateY(-2px);background:var(--ink-3)}
-  .entry-card--sage{border-left:3px solid var(--sage)}
-  .entry-card--amber{border-left:3px solid var(--amber)}
-  .entry-card--terra{border-left:3px solid var(--terra)}
-  .entry-card__header{display:flex;align-items:flex-start;justify-content:space-between;
-    gap:var(--sp-3)}
-  .entry-card__phrase{font-family:var(--font-display);font-size:var(--fs-xl);
-    font-weight:600;color:var(--paper);font-style:italic;line-height:1.1;
-    font-variation-settings:"opsz" 48,"SOFT" 80;flex:1;min-width:0}
-  .entry-card__freq{display:flex;gap:2px;flex-shrink:0;padding-top:6px}
-  .entry-card__freq-dot{width:5px;height:5px;border-radius:50%;background:var(--paper-40)}
-  .entry-card__freq-dot.is-active{background:var(--gold)}
-  .entry-card__ipa{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    color:var(--gold);letter-spacing:0.04em}
-  .entry-card__meaning{font-size:var(--fs-sm);color:var(--paper-80);line-height:1.5;
-    flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .entry-card__footer{display:flex;align-items:center;justify-content:space-between;
-    gap:var(--sp-3);padding-top:var(--sp-2);border-top:1px solid var(--line)}
-  .entry-card__tags{display:flex;gap:var(--sp-2);flex-wrap:wrap}
-  .entry-card__tag{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.1em;color:var(--paper-40);text-transform:uppercase}
+  .scard{position:relative;text-align:left;padding:var(--sp-4);border-radius:var(--r-md);
+    background:var(--ink-2);border:1px solid var(--line);cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;gap:var(--sp-3);
+    transition:all var(--dur-med) var(--ease-out);min-height:120px;justify-content:center;
+    width:100%}
+  .scard:hover{transform:translateY(-2px);background:var(--ink-3)}
+  .scard--sage{border-color:var(--sage-line)}
+  .scard--sage:hover{border-color:var(--sage);box-shadow:0 8px 30px -10px rgba(127,168,137,0.3)}
+  .scard--amber{border-color:var(--amber-line)}
+  .scard--amber:hover{border-color:var(--amber);box-shadow:0 8px 30px -10px rgba(201,163,92,0.3)}
+  .scard--terra{border-color:var(--terra-line)}
+  .scard--terra:hover{border-color:var(--terra);box-shadow:0 8px 30px -10px rgba(199,123,92,0.3)}
+  .scard__dot{position:absolute;top:var(--sp-3);right:var(--sp-3);
+    width:6px;height:6px;border-radius:50%}
+  .scard__dot--sage{background:var(--sage)}
+  .scard__dot--amber{background:var(--amber)}
+  .scard__dot--terra{background:var(--terra)}
+  .scard__ipa{font-family:var(--font-display);font-size:clamp(2rem,5vw,2.5rem);
+    line-height:1;font-weight:500;letter-spacing:-0.02em;
+    font-variation-settings:"opsz" 144,"SOFT" 100;font-style:italic}
+  .scard__ipa--sage{color:var(--sage)}
+  .scard__ipa--amber{color:var(--amber)}
+  .scard__ipa--terra{color:var(--terra)}
+  .scard__keyword{font-family:var(--font-mono);font-size:var(--fs-3xs);
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-60);text-align:center}
+  .scard:hover .scard__keyword{color:var(--paper)}
 
-  .empty-state{padding:var(--sp-8) var(--sp-4);text-align:center;color:var(--paper-40)}
-  .empty-state__icon{font-family:var(--font-display);font-size:48px;color:var(--gold);
-    opacity:0.3;margin-bottom:var(--sp-3);font-style:italic}
-  .empty-state__text{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.18em;text-transform:uppercase}
+  /* ─── SOUND LIST (alternativa para análise) ─── */
+  .slist{display:flex;flex-direction:column;gap:var(--sp-2)}
+  .slist__item{display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-4);
+    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);
+    cursor:pointer;transition:all var(--dur-fast);width:100%;text-align:left}
+  .slist__item:hover{background:var(--ink-3);border-color:var(--gold-line)}
+  .slist__ipa{font-family:var(--font-display);font-size:var(--fs-2xl);font-weight:500;
+    font-style:italic;line-height:1;flex-shrink:0;width:48px;text-align:center;
+    font-variation-settings:"opsz" 144}
+  .slist__ipa--sage{color:var(--sage)} .slist__ipa--amber{color:var(--amber)} .slist__ipa--terra{color:var(--terra)}
+  .slist__main{flex:1;min-width:0}
+  .slist__keyword{font-family:var(--font-display);font-size:var(--fs-base);font-weight:600;
+    color:var(--paper);font-style:italic;font-variation-settings:"opsz" 48,"SOFT" 80}
+  .slist__trans{font-size:var(--fs-xs);color:var(--paper-40);margin-top:2px}
+  .slist__chev{color:var(--paper-40);flex-shrink:0;font-family:var(--font-mono)}
 
-  .module-soon{padding:var(--sp-8) var(--sp-5);text-align:center;
-    background:var(--ink-2);border:1px dashed var(--line-strong);border-radius:var(--r-md)}
-  .module-soon__icon{font-family:var(--font-display);font-size:64px;color:var(--gold);
-    opacity:0.4;margin-bottom:var(--sp-3);font-style:italic;line-height:1}
-  .module-soon__title{font-family:var(--font-display);font-size:var(--fs-2xl);
-    color:var(--paper);margin-bottom:var(--sp-3);font-weight:600}
-  .module-soon__text{font-size:var(--fs-sm);color:var(--paper-60);max-width:46ch;
-    margin-inline:auto;line-height:1.6}
-  .module-soon__badge{display:inline-block;margin-top:var(--sp-4);
-    padding:var(--sp-2) var(--sp-4);border:1px solid var(--gold-line);
-    background:var(--gold-soft);color:var(--gold);
-    font-family:var(--font-mono);font-size:var(--fs-3xs);letter-spacing:0.18em;
-    text-transform:uppercase;border-radius:999px}
+  /* ─── BTN EDITORIAL ─── */
+  .btn-editorial{display:inline-flex;align-items:center;gap:var(--sp-3);
+    padding:var(--sp-3) var(--sp-5);font-family:var(--font-mono);
+    font-size:var(--fs-3xs);letter-spacing:0.18em;text-transform:uppercase;
+    font-weight:500;color:var(--paper);background:transparent;
+    border:1px solid var(--line-strong);border-radius:999px;cursor:pointer;
+    min-height:44px;transition:all var(--dur-fast) var(--ease-out)}
+  .btn-editorial:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+  .btn-editorial__icon{width:14px;height:14px;display:grid;place-items:center;font-size:14px}
 
   /* ─── AUDIO BUTTON ─── */
   .audio-btn{width:36px;height:36px;border-radius:50%;
@@ -385,16 +404,23 @@
   .modal__head-top{display:flex;align-items:flex-start;justify-content:space-between;
     gap:var(--sp-4)}
   .modal__eyebrow{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);
+    letter-spacing:0.22em;text-transform:uppercase;
     margin-bottom:var(--sp-3);display:flex;align-items:center;gap:var(--sp-3)}
-  .modal__eyebrow::before{content:"";width:20px;height:1px;background:var(--gold)}
+  .modal__eyebrow::before{content:"";width:20px;height:1px}
+  .modal__eyebrow--sage{color:var(--sage)} .modal__eyebrow--sage::before{background:var(--sage)}
+  .modal__eyebrow--amber{color:var(--amber)} .modal__eyebrow--amber::before{background:var(--amber)}
+  .modal__eyebrow--terra{color:var(--terra)} .modal__eyebrow--terra::before{background:var(--terra)}
   .modal__hero{display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
-  .modal__hero-text{flex:1;min-width:0}
-  .modal__phrase{font-family:var(--font-display);font-size:clamp(2rem,7vw,3rem);
-    line-height:1;font-weight:700;letter-spacing:-0.02em;color:var(--paper);
-    font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 80;margin-bottom:var(--sp-2)}
-  .modal__ipa{font-family:var(--font-mono);font-size:var(--fs-sm);color:var(--gold);
-    letter-spacing:0.04em}
+  .modal__ipa{font-family:var(--font-display);font-size:clamp(4rem,12vw,6rem);
+    line-height:0.9;font-weight:500;letter-spacing:-0.03em;font-style:italic;
+    font-variation-settings:"opsz" 144,"SOFT" 100}
+  .modal__ipa--sage{color:var(--sage)} .modal__ipa--amber{color:var(--amber)} .modal__ipa--terra{color:var(--terra)}
+  .modal__keyword-block{display:flex;align-items:center;gap:var(--sp-4)}
+  .modal__keyword{font-family:var(--font-display);font-size:var(--fs-2xl);font-weight:600;
+    color:var(--paper);font-style:italic;line-height:1.1;
+    font-variation-settings:"opsz" 144,"SOFT" 80}
+  .modal__keyword-trans{font-size:var(--fs-xs);color:var(--paper-40);margin-top:var(--sp-1);
+    font-style:normal}
   .modal__close{width:40px;height:40px;border-radius:50%;
     border:1px solid var(--line-strong);background:transparent;color:var(--paper);
     cursor:pointer;display:grid;place-items:center;font-size:20px;line-height:1;
@@ -404,52 +430,77 @@
   .modal__body{flex:1;overflow-y:auto;padding:var(--sp-5);background:var(--ink)}
   @media(min-width:720px){.modal__body{padding:var(--sp-6)}}
 
-  .modal__row{display:grid;grid-template-columns:1fr;gap:var(--sp-3);margin-bottom:var(--sp-5)}
-  @media(min-width:560px){.modal__row{grid-template-columns:repeat(3,1fr)}}
-  .meta-pill{padding:var(--sp-3);background:var(--ink-2);border:1px solid var(--line);
-    border-radius:var(--r-sm);text-align:center}
-  .meta-pill__label{font-family:var(--font-mono);font-size:var(--fs-3xs);
-    letter-spacing:0.16em;text-transform:uppercase;color:var(--paper-40);
-    margin-bottom:var(--sp-2)}
-  .meta-pill__value{font-family:var(--font-display);font-size:var(--fs-sm);
-    color:var(--paper);font-weight:600;font-style:italic}
-
   .modal__block{margin-bottom:var(--sp-6)}
   .modal__block:last-child{margin-bottom:0}
   .modal__block-eyebrow{font-family:var(--font-mono);font-size:var(--fs-3xs);
     letter-spacing:0.22em;text-transform:uppercase;color:var(--paper-40);
     margin-bottom:var(--sp-3);display:flex;align-items:center;gap:var(--sp-3)}
   .modal__block-eyebrow::before{content:"§";color:var(--gold);font-size:14px}
-  .modal__meaning{padding:var(--sp-4);border-left:2px solid var(--gold);
-    background:var(--bg-elev-softer);font-size:var(--fs-base);color:var(--paper);
-    line-height:1.6;border-radius:0 var(--r-sm) var(--r-sm) 0;font-weight:500}
+  .modal__tip{padding:var(--sp-4);border-left:2px solid var(--gold);
+    background:var(--bg-elev-softer);font-size:var(--fs-sm);color:var(--paper-80);
+    line-height:1.65;border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .modal__compare{padding:var(--sp-4);background:var(--ink-2);border:1px solid var(--line);
+    border-radius:var(--r-sm);font-size:var(--fs-sm);color:var(--paper-80);line-height:1.65}
 
-  .examples{display:flex;flex-direction:column;gap:var(--sp-2)}
-  .example{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);
-    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);
-    transition:all var(--dur-fast)}
+  .modal__chips{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+  .modal__chip{font-family:var(--font-mono);font-size:var(--fs-3xs);letter-spacing:0.06em;
+    color:var(--gold);padding:var(--sp-2) var(--sp-3);background:var(--gold-soft);
+    border:1px solid var(--gold-line);border-radius:var(--r-sm)}
+
+  .modal__examples{display:grid;gap:var(--sp-2);grid-template-columns:1fr}
+  @media(min-width:560px){.modal__examples{grid-template-columns:repeat(2,1fr)}}
+  .example{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);
+    padding:var(--sp-3) var(--sp-4);background:var(--ink-2);border:1px solid var(--line);
+    border-radius:var(--r-sm);transition:all var(--dur-fast)}
   .example:hover{border-color:var(--gold-line);background:var(--ink-3)}
-  .example__main{flex:1;min-width:0}
-  .example__en{font-family:var(--font-display);font-size:var(--fs-base);font-weight:500;
-    color:var(--paper);font-style:italic;font-variation-settings:"opsz" 48,"SOFT" 80;
-    line-height:1.4;margin-bottom:2px}
-  .example__pt{font-size:var(--fs-xs);color:var(--paper-60);line-height:1.4}
+  .example__main{min-width:0}
+  .example__word{font-family:var(--font-display);font-size:var(--fs-base);font-weight:500;
+    color:var(--paper);font-style:italic;font-variation-settings:"opsz" 48,"SOFT" 80}
+  .example__trans{font-size:var(--fs-3xs);color:var(--paper-40);margin-top:2px;font-style:normal}
 
-  .modal__trap{padding:var(--sp-4);background:var(--terra-soft);
-    border:1px solid var(--terra-line);border-radius:var(--r-sm);
-    font-size:var(--fs-sm);color:var(--paper-80);line-height:1.6}
-  .modal__trap-icon{color:var(--terra);font-weight:700;margin-right:var(--sp-2)}
-
-  .similar-list{display:flex;flex-direction:column;gap:var(--sp-2)}
-  .similar-item{display:flex;align-items:center;gap:var(--sp-3);
-    padding:var(--sp-3) var(--sp-4);background:var(--bg-elev-softer);
-    border:1px solid var(--line);border-radius:var(--r-sm);transition:all var(--dur-fast)}
-  .similar-item:hover{border-color:var(--gold-line)}
-  .similar-item__phrase{font-family:var(--font-display);font-style:italic;
-    font-weight:600;color:var(--paper);min-width:140px;
+  .pair{padding:var(--sp-4);border:1px solid var(--terra-line);
+    background:var(--terra-soft);border-radius:var(--r-sm);margin-bottom:var(--sp-3)}
+  .pair:last-child{margin-bottom:0}
+  .pair__row{display:flex;align-items:center;justify-content:space-between;
+    gap:var(--sp-4);flex-wrap:wrap}
+  .pair__side{display:flex;align-items:center;gap:var(--sp-3);min-width:0;flex:1}
+  .pair__word{font-family:var(--font-display);font-size:var(--fs-base);font-weight:500;
+    color:var(--paper);font-style:italic;line-height:1.1;
     font-variation-settings:"opsz" 48,"SOFT" 80}
-  .similar-item__sep{color:var(--paper-40);font-family:var(--font-mono);font-size:var(--fs-3xs)}
-  .similar-item__meaning{font-size:var(--fs-xs);color:var(--paper-60);line-height:1.4}
+  .pair__ipa{font-family:var(--font-mono);font-size:var(--fs-3xs);color:var(--terra);
+    margin-top:2px;letter-spacing:0.04em}
+  .pair__vs{font-family:var(--font-mono);font-size:var(--fs-3xs);letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--paper-40)}
+  .pair__meaning{font-size:var(--fs-xs);color:var(--paper-60);font-style:italic;
+    margin-top:var(--sp-3);padding-top:var(--sp-3);border-top:1px solid var(--terra-line)}
+
+  /* ─── ERROS LIST ─── */
+  .errors{display:grid;gap:var(--sp-3)}
+  .error{display:grid;grid-template-columns:auto 1fr;gap:var(--sp-4);
+    padding:var(--sp-5);background:var(--ink-2);border:1px solid var(--line);
+    border-radius:var(--r-md);transition:border-color var(--dur-med)}
+  .error:hover{border-color:var(--gold-line)}
+  .error__num{font-family:var(--font-mono);font-size:var(--fs-2xs);color:var(--gold);
+    letter-spacing:0.14em;align-self:start}
+  .error__title{font-family:var(--font-display);font-size:var(--fs-base);font-weight:600;
+    color:var(--paper);margin-bottom:var(--sp-2)}
+  .error__detail{font-size:var(--fs-sm);color:var(--paper-60);line-height:1.55}
+
+  /* ─── ROADMAP ─── */
+  .roadmap{display:grid;gap:var(--sp-4)}
+  .phase{display:grid;grid-template-columns:auto 1fr;gap:var(--sp-5);
+    padding:var(--sp-5);background:var(--ink-2);border:1px solid var(--line);
+    border-radius:var(--r-md);position:relative}
+  .phase__num{font-family:var(--font-display);font-size:var(--fs-3xl);font-weight:700;
+    color:var(--gold);font-variation-settings:"opsz" 144;line-height:1;
+    font-style:italic;align-self:start}
+  .phase__title{font-family:var(--font-display);font-size:var(--fs-xl);font-weight:600;
+    color:var(--paper);margin-bottom:var(--sp-2)}
+  .phase__focus{font-family:var(--font-mono);font-size:var(--fs-3xs);color:var(--gold);
+    letter-spacing:0.1em;margin-bottom:var(--sp-3);
+    padding:var(--sp-2) var(--sp-3);background:var(--gold-soft);
+    border:1px solid var(--gold-line);border-radius:var(--r-sm);display:inline-block}
+  .phase__why{font-size:var(--fs-sm);color:var(--paper-60);line-height:1.6;font-style:italic}
 
   /* ─── FOOTER ─── */
   .footer{padding-block:var(--sp-8) var(--sp-7);border-top:1px solid var(--line);
@@ -469,6 +520,12 @@
   .modal__body::-webkit-scrollbar-track{background:transparent}
   .modal__body::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:999px}
   .modal__body::-webkit-scrollbar-thumb:hover{background:var(--gold-line)}
+
+  @media print{
+    body::before,body::after,.progress,.topbar,.audio-btn,.modal{display:none !important}
+    body{background:white;color:black}
+    .scard,.section{background:white;border-color:#ccc;box-shadow:none;page-break-inside:avoid}
+  }
 
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
@@ -490,7 +547,7 @@
       </div>
     </div>
     <div class="topbar__actions">
-      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar entre tema claro e escuro" title="Alternar tema">
         <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
@@ -499,85 +556,219 @@
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
         </svg>
       </button>
-      <div class="topbar__version">v1.4 · Connectors</div>
+      <div class="topbar__version">v1.0 · Phonetics</div>
     </div>
   </div>
 </header>
 
 <section class="hero wrap">
   <div class="hero__meta">
-    <span class="hero__meta-item">English Connectors</span>
+    <span class="hero__meta-item">Fonética Inglesa</span>
     <span class="hero__meta-sep"></span>
     <span>Edição · MMXXVI</span>
     <span class="hero__meta-sep"></span>
-    <span>Frequência COCA</span>
+    <span>Para Falantes Brasileiros</span>
   </div>
   <h1 class="hero__title">
     <span class="stanza">A arquitetura</span>
-    <span class="stanza"><em>conectiva</em> do</span>
+    <span class="stanza"><em>sonora</em> do</span>
     <span class="stanza">inglês.</span>
   </h1>
   <p class="hero__lead">
-    Um framework editorial para dominar os elementos que articulam o inglês intermediário-avançado —
-    phrasal verbs, advérbios, conjunções, linking words e collocations. Curado por frequência real (COCA).
+    Um framework editorial para mapear, treinar e dominar os sons do inglês americano —
+    dos fonemas familiares aos desafios articulatórios. Cada som vem com áudio,
+    análise comparativa e exemplos contextualizados.
   </p>
   <div class="hero__tldr">
     <span class="eyebrow">O que você encontra</span>
     <p>
-      Cada entrada vem com IPA, áudio integrado, três exemplos contextualizados, tradução,
-      <em>armadilha BR</em> (erros típicos do brasileiro) e sinônimos contrastivos. Aprendizado
-      construído sobre dados reais de uso.
+      Quarenta sons. Onze monoftongos. Cinco ditongos. Vinte e quatro consoantes.
+      Cada um classificado pela sua relação com o português brasileiro e acompanhado
+      de seu próprio <em>léxico fonético</em> — produção articulatória, contraste e pares mínimos.
     </p>
   </div>
-  <div class="stats" id="stats"></div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat__num" id="stat-total">40</div>
+      <div class="stat__label">Sons Mapeados</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num stat__num--sage" id="stat-sage">—</div>
+      <div class="stat__label">Existem em PT-BR</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num stat__num--amber" id="stat-amber">—</div>
+      <div class="stat__label">Aproximados</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num stat__num--terra" id="stat-terra">—</div>
+      <div class="stat__label">Novos / Desafiadores</div>
+    </div>
+  </div>
 </section>
 
+<!-- ─── § 01 · METODOLOGIA ─── -->
 <section class="section wrap">
   <div class="section__header">
     <span class="section__number">§ 01 · Metodologia</span>
-    <h2 class="section__title">Seis <em>módulos</em>, frequência real</h2>
+    <h2 class="section__title">Como ler este framework</h2>
     <p class="section__lead">
-      Diferente de listas didáticas que ensinam o que é fácil de ensinar, este framework é guiado por dados
-      do <em>Corpus of Contemporary American English (COCA)</em> — selecionando o que é realmente usado.
+      A taxonomia fonética se organiza em <em>três planos</em> de relação com o português brasileiro:
+      sons que existem, sons aproximados e sons novos. Cada classificação direciona um esforço de estudo distinto.
     </p>
   </div>
   <div class="callout">
     <div class="callout__mark">§</div>
     <div class="callout__content">
-      <h4>Sistema cromático tripartite</h4>
-      <p>
-        <span style="color:var(--sage)">●</span> <strong>Sage</strong>: alta frequência, fácil para brasileiros.
-        <span style="color:var(--amber)">●</span> <strong>Amber</strong>: frequência média, requer atenção.
-        <span style="color:var(--terra)">●</span> <strong>Terra</strong>: idiomáticos críticos / armadilhas.
-        Foque inicialmente nos amber e terra — são onde brasileiros mais erram.
-      </p>
+      <h4>Áudio e Pares Mínimos Integrados</h4>
+      <p>Cada som traz botão de áudio para palavra-chave e exemplos. Os sons mais críticos vêm acompanhados de <strong>pares mínimos</strong> — contrastes onde uma vogal ou consoante muda completamente o significado (<em>ship/sheep</em>, <em>think/sink</em>, <em>they/day</em>).</p>
     </div>
   </div>
 </section>
 
+<!-- ─── § 02 · LEGENDA CROMÁTICA ─── -->
 <section class="section wrap">
   <div class="section__header">
-    <span class="section__number">§ 02 · Inventário</span>
-    <h2 class="section__title">Os <em>seis módulos</em></h2>
+    <span class="section__number">§ 02 · Sistema Cromático</span>
+    <h2 class="section__title">Os <em>três planos</em> de dificuldade</h2>
+  </div>
+  <div class="legend">
+    <div class="legend__item legend__item--sage">
+      <div class="legend__head">
+        <span class="legend__dot legend__dot--sage"></span>
+        <span class="legend__count legend__count--sage" id="legend-sage">—</span>
+        <span class="legend__total" id="legend-sage-pct">— do total</span>
+      </div>
+      <div class="legend__title">Existe em português</div>
+      <p class="legend__desc">Som idêntico ou virtualmente idêntico ao português brasileiro. Vantagem competitiva — exige apenas reconhecimento.</p>
+    </div>
+    <div class="legend__item legend__item--amber">
+      <div class="legend__head">
+        <span class="legend__dot legend__dot--amber"></span>
+        <span class="legend__count legend__count--amber" id="legend-amber">—</span>
+        <span class="legend__total" id="legend-amber-pct">— do total</span>
+      </div>
+      <div class="legend__title">Aproximado</div>
+      <p class="legend__desc">Som parecido, com diferenças sutis que marcam o sotaque. Mais traiçoeiros que os novos — exigem refinamento, não criação.</p>
+    </div>
+    <div class="legend__item legend__item--terra">
+      <div class="legend__head">
+        <span class="legend__dot legend__dot--terra"></span>
+        <span class="legend__count legend__count--terra" id="legend-terra">—</span>
+        <span class="legend__total" id="legend-terra-pct">— do total</span>
+      </div>
+      <div class="legend__title">Novo / Desafiador</div>
+      <p class="legend__desc">Som inexistente em português brasileiro. Prioridade máxima — comprometem inteligibilidade e exigem treino dedicado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── § 03 · TABELA IPA ─── -->
+<section class="section wrap" id="tabela">
+  <div class="section__header">
+    <span class="section__number">§ 03 · Tabela IPA</span>
+    <h2 class="section__title">O <em>inventário</em> completo</h2>
+    <p class="section__lead">
+      Toque em qualquer som para abrir a ficha completa: dica articulatória,
+      comparação com o português, grafias frequentes, exemplos com áudio e pares mínimos.
+    </p>
   </div>
 
-  <div class="module-tabs" id="module-tabs"></div>
+  <div class="sgroup">
+    <div class="sgroup__head">
+      <h3 class="sgroup__title">Vogais</h3>
+      <span class="sgroup__meta" id="vowels-count">— sons</span>
+    </div>
+    <div class="sgroup__sub">Monoftongos</div>
+    <div class="sgrid" id="grid-monophthongs"></div>
+    <div class="sgroup__sub">Ditongos</div>
+    <div class="sgrid" id="grid-diphthongs"></div>
+  </div>
 
-  <div id="module-content"></div>
+  <div class="sgroup">
+    <div class="sgroup__head">
+      <h3 class="sgroup__title">Consoantes</h3>
+      <span class="sgroup__meta" id="consonants-count">— sons</span>
+    </div>
+    <div class="sgrid" id="grid-consonants"></div>
+  </div>
+</section>
+
+<!-- ─── § 04 · OS NOVOS ─── -->
+<section class="section wrap">
+  <div class="section__header">
+    <span class="section__number">§ 04 · Prioridade Máxima</span>
+    <h2 class="section__title">Os <em>dez sons novos</em></h2>
+    <p class="section__lead">
+      Sons inexistentes em português. São os principais responsáveis por mal-entendidos
+      e devem encabeçar qualquer plano de estudo sério. ROI fonético máximo.
+    </p>
+  </div>
+  <div class="slist" id="list-new"></div>
+</section>
+
+<!-- ─── § 05 · OS APROXIMADOS ─── -->
+<section class="section wrap">
+  <div class="section__header">
+    <span class="section__number">§ 05 · Armadilhas Sutis</span>
+    <h2 class="section__title">Os <em>sete sons aproximados</em></h2>
+    <p class="section__lead">
+      Mais perigosos que os novos: você acha que sabe pronunciar e a aproximação automática
+      ao som português marca o sotaque sem você perceber. Última camada de refinamento.
+    </p>
+  </div>
+  <div class="slist" id="list-approx"></div>
+</section>
+
+<!-- ─── § 06 · ERROS TÍPICOS ─── -->
+<section class="section wrap">
+  <div class="section__header">
+    <span class="section__number">§ 06 · Diagnóstico</span>
+    <h2 class="section__title">Erros típicos do <em>falante brasileiro</em></h2>
+    <p class="section__lead">
+      Padrões sistemáticos de transferência fonológica do português para o inglês.
+      Reconhecer o erro é o primeiro passo para corrigi-lo.
+    </p>
+  </div>
+  <div class="errors">
+    <div class="error"><div class="error__num">01</div><div><div class="error__title">Vogais frouxas</div><div class="error__detail">Substituição de /ɪ/ e /ʊ/ por /i/ e /u/ tensos. <em>ship</em> vira <em>sheep</em>; <em>full</em> vira <em>fool</em>.</div></div></div>
+    <div class="error"><div class="error__num">02</div><div><div class="error__title">Schwa /ə/ ignorado</div><div class="error__detail">Pronunciar todas as vogais com força total. Em inglês, sílabas átonas devem ser reduzidas — é a base do ritmo da língua.</div></div></div>
+    <div class="error"><div class="error__num">03</div><div><div class="error__title">TH (θ/ð) substituído</div><div class="error__detail">Trocar /θ/ por /t/, /f/ ou /s/. <em>think</em> vira <em>"tink"</em>, <em>"fink"</em> ou <em>"sink"</em>. A língua deve aparecer entre os dentes.</div></div></div>
+    <div class="error"><div class="error__num">04</div><div><div class="error__title">Palatalização de T/D</div><div class="error__detail"><em>Time</em> vira <em>"tchaime"</em>; <em>dinner</em> vira <em>"djiner"</em>. O T/D antes de I deve permanecer puro.</div></div></div>
+    <div class="error"><div class="error__num">05</div><div><div class="error__title">L final vocalizado</div><div class="error__detail"><em>School</em> vira <em>"scoou"</em>. O L final inglês é consoante (dark L), não /u/.</div></div></div>
+    <div class="error"><div class="error__num">06</div><div><div class="error__title">R aspirado no lugar do retroflexo</div><div class="error__detail">Usar o R do português (rato) no lugar do R inglês. O R inglês exige língua curvada para trás — único, não cabe transferência direta.</div></div></div>
+    <div class="error"><div class="error__num">07</div><div><div class="error__title">Vogal nasalizada em final M/N</div><div class="error__detail">Em <em>name</em> ou <em>man</em>, nasalizar a vogal e omitir o M/N. Os finais consonantais devem ser articulados claramente.</div></div></div>
+    <div class="error"><div class="error__num">08</div><div><div class="error__title">/æ/ confundido com /ɛ/</div><div class="error__detail"><em>Cat</em> e <em>bed</em> soam iguais. A boca abre mais para /æ/ — quase um "a" com sorriso forçado.</div></div></div>
+  </div>
+</section>
+
+<!-- ─── § 07 · ROADMAP ─── -->
+<section class="section wrap">
+  <div class="section__header">
+    <span class="section__number">§ 07 · Plano de Estudo</span>
+    <h2 class="section__title">Roadmap em <em>quatro fases</em></h2>
+    <p class="section__lead">
+      Sequência otimizada por retorno linguístico. Cada fase resolve um vetor de inteligibilidade —
+      do ruído mais alto ao refinamento final.
+    </p>
+  </div>
+  <div class="roadmap">
+    <div class="phase"><div class="phase__num">I</div><div><div class="phase__title">Vogais frouxas</div><div class="phase__focus">/ɪ/ · /ʊ/ · /æ/ · /ʌ/</div><p class="phase__why">Travam mais a inteligibilidade do que qualquer consoante. Resolver primeiro produz o salto mais perceptível.</p></div></div>
+    <div class="phase"><div class="phase__num">II</div><div><div class="phase__title">Schwa e ritmo</div><div class="phase__focus">/ə/ · /ɝ/</div><p class="phase__why">O inglês é stress-timed. Sem schwa, falta a musicalidade que distingue um falante avançado de um intermediário.</p></div></div>
+    <div class="phase"><div class="phase__num">III</div><div><div class="phase__title">TH e R retroflexo</div><div class="phase__focus">/θ/ · /ð/ · /r/</div><p class="phase__why">Os carimbos sonoros do inglês. Marcam o sotaque imediatamente — no primeiro <em>"the"</em> ou no primeiro <em>"red"</em>.</p></div></div>
+    <div class="phase"><div class="phase__num">IV</div><div><div class="phase__title">Refinamento dos aproximados</div><div class="phase__focus">aspiração de /p t k/ · L escuro · T/D não palatalizados</div><p class="phase__why">Última camada — já não é sobre inteligibilidade, é sobre elegância fonética e proximidade ao nativo.</p></div></div>
+  </div>
 </section>
 
 <footer class="footer wrap">
   <div class="footer__mark">VS <em>Consulting</em></div>
   <div class="footer__divider"></div>
-  <div class="footer__tagline">Linguistic Lab · Connectors Edition</div>
-  <p class="footer__meta">
-    English Connectors & Compounds · Versão 1.4 · MMXXVI<br>
-    102 phrasal verbs · 80 adverbs · 40 conjunctions · 50 linking words · 100 collocations · 80 prepositions<br>
-    452 entradas curadas · Framework expandido.
-  </p>
+  <div class="footer__tagline">Linguistic Lab · Phonetics Edition</div>
+  <p class="footer__meta">Para Vagner & Thays · Preparação fonética para imersão internacional<br>Versão 1.0 · MMXXVI · Um estudo sobre a arquitetura sonora do inglês.</p>
 </footer>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true">
+<!-- ─── MODAL ─── -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal__backdrop" data-close></div>
   <div class="modal__panel">
     <header class="modal__head">
@@ -585,105 +776,263 @@
         <div style="flex:1;min-width:0">
           <div class="modal__eyebrow" id="modal-eyebrow">—</div>
           <div class="modal__hero">
-            <button class="audio-btn audio-btn--lg" id="modal-audio" aria-label="Tocar áudio">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            </button>
-            <div class="modal__hero-text">
-              <div class="modal__phrase" id="modal-phrase">—</div>
-              <div class="modal__ipa" id="modal-ipa">—</div>
+            <div class="modal__ipa" id="modal-ipa">—</div>
+            <div class="modal__keyword-block">
+              <button class="audio-btn audio-btn--lg" id="modal-audio" aria-label="Tocar palavra-chave">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
+              <div>
+                <div class="modal__keyword" id="modal-keyword">—</div>
+                <div class="modal__keyword-trans" id="modal-keyword-trans">—</div>
+              </div>
             </div>
           </div>
         </div>
         <button class="modal__close" data-close aria-label="Fechar">×</button>
       </div>
     </header>
+
     <div class="modal__body" id="modal-body"></div>
   </div>
 </div>
 
-<script src="data.js"></script>
 <script>
-const ICON_VOLUME = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+// ═══════════════════════════════════════════════════════════════
+//   DADOS — 40 sons do inglês (General American)
+// ═══════════════════════════════════════════════════════════════
 
-// ═══════════════════════════════════════════════════════════════
-//   ESTADO
-// ═══════════════════════════════════════════════════════════════
-let state = {
-  module: 'phrasal',
-  search: '',
-  cls: 'all',
-  register: 'all',
-  category: 'all'
+const SOUNDS = [
+  // ─── VOGAIS MONOFTONGOS ───
+  {id:'i',ipa:'i',category:'vowel',sub:'monophthong',keyword:'tree',kt:'árvore',cls:'amber',
+    tip:'Som longo e tenso, lábios em sorriso largo. Mais alongado que o "i" do português.',
+    pt:'Existe um /i/ similar em português ("vi", "ali"), mas o inglês é significativamente mais longo, tenso e com lábios mais espalhados. A duração é parte da identidade do som.',
+    spell:['ee','ea','e','ie','y'],
+    ex:[{w:'tree',t:'árvore'},{w:'sea',t:'mar'},{w:'see',t:'ver'},{w:'me',t:'eu/mim'},{w:'piece',t:'peça'},{w:'happy',t:'feliz'}],
+    pairs:[{w1:'sheep',i1:'ʃip',w2:'ship',i2:'ʃɪp',m:'ovelha vs navio'},{w1:'beat',i1:'bit',w2:'bit',i2:'bɪt',m:'batida vs pedaço'}]},
+  {id:'I',ipa:'ɪ',category:'vowel',sub:'monophthong',keyword:'fish',kt:'peixe',cls:'terra',
+    tip:'Vogal frouxa, curta e relaxada. Boca menos aberta que /i/, lábios neutros. NÃO é o "i" do português.',
+    pt:'Som inexistente em português. Brasileiros tendem a substituir por /i/ tenso, criando confusão (ship→sheep). Pense num "i" preguiçoso, quase um "ê" curto e relaxado.',
+    spell:['i','y','e (átono)','ui'],
+    ex:[{w:'fish',t:'peixe'},{w:'big',t:'grande'},{w:'sit',t:'sentar'},{w:'live',t:'viver'},{w:'system',t:'sistema'},{w:'build',t:'construir'}],
+    pairs:[{w1:'ship',i1:'ʃɪp',w2:'sheep',i2:'ʃip',m:'navio vs ovelha'},{w1:'fill',i1:'fɪl',w2:'feel',i2:'fil',m:'encher vs sentir'}]},
+  {id:'U',ipa:'ʊ',category:'vowel',sub:'monophthong',keyword:'good',kt:'bom',cls:'terra',
+    tip:'Vogal frouxa, curta. Lábios NÃO ficam tão arredondados quanto na letra U do português.',
+    pt:'Não existe em português. Brasileiros tendem a transformar em /u/ tenso. O segredo: relaxe os lábios e mantenha o som curto.',
+    spell:['oo','u','ou'],
+    ex:[{w:'good',t:'bom'},{w:'book',t:'livro'},{w:'put',t:'colocar'},{w:'look',t:'olhar'},{w:'foot',t:'pé'},{w:'could',t:'poderia'},{w:'woman',t:'mulher'}],
+    pairs:[{w1:'pull',i1:'pʊl',w2:'pool',i2:'pul',m:'puxar vs piscina'},{w1:'full',i1:'fʊl',w2:'fool',i2:'ful',m:'cheio vs tolo'}]},
+  {id:'u',ipa:'u',category:'vowel',sub:'monophthong',keyword:'food',kt:'comida',cls:'amber',
+    tip:'Ponto de partida é o "u" do português, porém mais longo, tenso e exagerado. Lábios bem arredondados.',
+    pt:'Existe um /u/ em português ("tu", "uva"), mas o inglês é mais longo e com lábios mais protraídos. Aumente a duração e a tensão.',
+    spell:['oo','u','ew','ue','oe'],
+    ex:[{w:'food',t:'comida'},{w:'school',t:'escola'},{w:'June',t:'junho'},{w:'super',t:'super'},{w:'new',t:'novo'},{w:'blue',t:'azul'},{w:'shoe',t:'sapato'}]},
+  {id:'e',ipa:'e',category:'vowel',sub:'monophthong',keyword:'egg',kt:'ovo',cls:'sage',
+    tip:'Equivalente ao "é" aberto do português. Mandíbula levemente baixa, lábios neutros.',
+    pt:'Praticamente idêntico ao "é" de "pé", "café", "fé". Um dos sons mais fáceis para brasileiros.',
+    spell:['e','ea','a (raro)'],
+    ex:[{w:'egg',t:'ovo'},{w:'bed',t:'cama'},{w:'red',t:'vermelho'},{w:'head',t:'cabeça'},{w:'friend',t:'amigo'},{w:'said',t:'disse'}]},
+  {id:'schwa',ipa:'ə',category:'vowel',sub:'monophthong',keyword:'second',kt:'segundo',cls:'terra',
+    tip:'O famoso "schwa". Relaxe completamente a língua e os lábios. É um som fraco, neutro, sem identidade.',
+    pt:'Som inexistente em português. É o som mais frequente do inglês — aparece em sílabas átonas (não acentuadas). A regra: vogais átonas em inglês quase sempre viram schwa.',
+    spell:['a, e, i, o, u (átonos)','ous'],
+    ex:[{w:'America',t:'América'},{w:'second',t:'segundo'},{w:'river',t:'rio'},{w:'horrible',t:'horrível'},{w:'lettuce',t:'alface'},{w:'dangerous',t:'perigoso'},{w:'obvious',t:'óbvio'},{w:'precious',t:'precioso'}]},
+  {id:'er',ipa:'ɝ',category:'vowel',sub:'monophthong',keyword:'bird',kt:'pássaro',cls:'terra',
+    tip:'Som "rótico" — vogal pronunciada com a língua curvada para trás (retroflexão). Inspire-se no R do interior do Brasil.',
+    pt:'Não existe no português padrão, mas é parecido com o R retroflexo caipira (interior de SP, MG, GO). É /ə/ + R retroflexo simultâneos.',
+    spell:['er','ir','ur','or','ear'],
+    ex:[{w:'bird',t:'pássaro'},{w:'her',t:'dela'},{w:'verb',t:'verbo'},{w:'first',t:'primeiro'},{w:'girl',t:'garota'},{w:'nurse',t:'enfermeira'},{w:'turn',t:'virar'},{w:'learn',t:'aprender'},{w:'work',t:'trabalhar'},{w:'world',t:'mundo'}]},
+  {id:'open-o',ipa:'ɔ',category:'vowel',sub:'monophthong',keyword:'water',kt:'água',cls:'sage',
+    tip:'Som "ó" aberto, como em português. Boca aberta, lábios levemente arredondados.',
+    pt:'Praticamente idêntico ao "ó" de "pó", "avó", "porta". No inglês americano moderno este som está se fundindo com /ɑ/ (cot-caught merger).',
+    spell:['aw','au','a (antes de l/r)','ough','augh'],
+    ex:[{w:'water',t:'água'},{w:'law',t:'lei'},{w:'because',t:'porque'},{w:'thought',t:'pensamento'},{w:'caught',t:'pegou'},{w:'all',t:'todos'}]},
+  {id:'ae',ipa:'æ',category:'vowel',sub:'monophthong',keyword:'cat',kt:'gato',cls:'terra',
+    tip:'Som entre "é" e "a". Boca bem aberta, lábios espalhados horizontalmente. Sorriso forçado.',
+    pt:'Não existe em português. Brasileiros tendem a usar /ɛ/ ou /a/. Pense num "é" muito aberto, quase chegando no "a", com a língua mais baixa.',
+    spell:['a (antes de consoante)'],
+    ex:[{w:'cat',t:'gato'},{w:'bad',t:'ruim'},{w:'man',t:'homem'},{w:'hand',t:'mão'},{w:'apple',t:'maçã'},{w:'family',t:'família'}],
+    pairs:[{w1:'bad',i1:'bæd',w2:'bed',i2:'bed',m:'ruim vs cama'},{w1:'cat',i1:'kæt',w2:'cut',i2:'kʌt',m:'gato vs cortar'}]},
+  {id:'caret',ipa:'ʌ',category:'vowel',sub:'monophthong',keyword:'bus',kt:'ônibus',cls:'terra',
+    tip:'Som central, entre "a" e "ô" do português. Boca semi-aberta, língua relaxada no meio.',
+    pt:'Não existe em português. Não é /a/ nem /ɔ/. Se aproxima de um "a" mais fechado, anasalado e curto. É o /ə/ tônico (acentuado).',
+    spell:['u','o','ou','oo (raro)'],
+    ex:[{w:'bus',t:'ônibus'},{w:'cup',t:'xícara'},{w:'love',t:'amor'},{w:'come',t:'vir'},{w:'mother',t:'mãe'},{w:'country',t:'país'},{w:'blood',t:'sangue'}],
+    pairs:[{w1:'cut',i1:'kʌt',w2:'cat',i2:'kæt',m:'cortar vs gato'}]},
+  {id:'a',ipa:'ɑ',category:'vowel',sub:'monophthong',keyword:'hot',kt:'quente',cls:'amber',
+    tip:'Boca bem aberta e lábios relaxados. Mistura de "a" e "ó" do português, mais para o "a".',
+    pt:'Próximo do "á" tônico e aberto do português ("pá"), mas com a língua mais recuada. Brasileiros costumam pronunciar bem este som.',
+    spell:['o (em sílaba tônica)','a (em "father")'],
+    ex:[{w:'hot',t:'quente'},{w:'clock',t:'relógio'},{w:'stop',t:'parar'},{w:'doctor',t:'doutor'},{w:'job',t:'trabalho'},{w:'father',t:'pai'},{w:'star',t:'estrela'},{w:'car',t:'carro'}]},
+
+  // ─── DITONGOS ───
+  {id:'eI',ipa:'eɪ',category:'vowel',sub:'diphthong',keyword:'name',kt:'nome',cls:'sage',
+    tip:'Ditongo: começa em "ê" e desliza para "i" curto. Como o "ei" do português.',
+    pt:'Praticamente idêntico ao "ei" de "lei", "rei", "mateiro". Som natural para brasileiros.',
+    spell:['a (sílaba aberta)','ai','ay','ei','ey','eigh'],
+    ex:[{w:'name',t:'nome'},{w:'day',t:'dia'},{w:'rain',t:'chuva'},{w:'face',t:'rosto'},{w:'eight',t:'oito'},{w:'they',t:'eles/elas'}]},
+  {id:'OI',ipa:'ɔɪ',category:'vowel',sub:'diphthong',keyword:'boy',kt:'menino',cls:'sage',
+    tip:'Ditongo: começa em "ó" aberto e desliza para "i". Como o "ói" do português.',
+    pt:'Idêntico ao "ói" de "herói", "boi", "dói". Sem dificuldade para brasileiros.',
+    spell:['oy','oi'],
+    ex:[{w:'boy',t:'menino'},{w:'toy',t:'brinquedo'},{w:'voice',t:'voz'},{w:'choice',t:'escolha'},{w:'enjoy',t:'gostar'},{w:'point',t:'ponto'}]},
+  {id:'oU',ipa:'oʊ',category:'vowel',sub:'diphthong',keyword:'close',kt:'fechar',cls:'sage',
+    tip:'Ditongo: começa em "ô" e desliza para "u" curto. Como o "ou" do português.',
+    pt:'Praticamente idêntico ao "ou" de "vou", "sou", "outro". Cuidado: nunca pronuncie como /ɔ/ puro.',
+    spell:['o (sílaba aberta)','ow','oa','ou (raro)'],
+    ex:[{w:'close',t:'fechar/perto'},{w:'go',t:'ir'},{w:'know',t:'saber'},{w:'home',t:'casa'},{w:'boat',t:'barco'},{w:'show',t:'mostrar'}]},
+  {id:'aI',ipa:'aɪ',category:'vowel',sub:'diphthong',keyword:'five',kt:'cinco',cls:'sage',
+    tip:'Ditongo: começa em "a" e desliza para "i". Como o "ai" do português.',
+    pt:'Idêntico ao "ai" de "pai", "vai", "cair". Som muito natural.',
+    spell:['i (sílaba aberta)','y','igh','ie'],
+    ex:[{w:'five',t:'cinco'},{w:'time',t:'tempo'},{w:'my',t:'meu/minha'},{w:'high',t:'alto'},{w:'night',t:'noite'},{w:'lie',t:'mentira'}]},
+  {id:'aU',ipa:'aʊ',category:'vowel',sub:'diphthong',keyword:'house',kt:'casa',cls:'sage',
+    tip:'Ditongo: começa em "a" e desliza para "u". Como o "au" do português.',
+    pt:'Idêntico ao "au" de "mau", "pau", "Paulo". Sem dificuldade.',
+    spell:['ow','ou'],
+    ex:[{w:'house',t:'casa'},{w:'now',t:'agora'},{w:'how',t:'como'},{w:'about',t:'sobre'},{w:'town',t:'cidade'},{w:'sound',t:'som'}]},
+
+  // ─── CONSOANTES ───
+  {id:'p',ipa:'p',category:'consonant',sub:'plosive',keyword:'paper',kt:'papel',cls:'sage',
+    tip:'Idêntico ao "p" do português, MAS com aspiração (sopro) no início de palavras tônicas.',
+    pt:'O som é o mesmo, porém o inglês adiciona aspiração: "pen" soa como "phen" com sopro. Diferença sutil, mas marca o sotaque.',
+    spell:['p','pp'],
+    ex:[{w:'paper',t:'papel'},{w:'pen',t:'caneta'},{w:'apple',t:'maçã'},{w:'happy',t:'feliz'},{w:'stop',t:'parar'}]},
+  {id:'b',ipa:'b',category:'consonant',sub:'plosive',keyword:'bee',kt:'abelha',cls:'sage',
+    tip:'Idêntico ao "b" do português. Som sonoro (vibração das cordas vocais).',
+    pt:'Som idêntico. Sem dificuldades para brasileiros.',
+    spell:['b','bb'],
+    ex:[{w:'bee',t:'abelha'},{w:'big',t:'grande'},{w:'baby',t:'bebê'},{w:'rabbit',t:'coelho'},{w:'job',t:'trabalho'}]},
+  {id:'t',ipa:'t',category:'consonant',sub:'plosive',keyword:'time',kt:'tempo',cls:'amber',
+    tip:'Língua toca os ALVÉOLOS (atrás dos dentes), não os dentes. Aspiração no início de palavras tônicas.',
+    pt:'No português brasileiro, o "t" é dental e antes de "i" vira "tch" (palatalização). Em inglês, o "t" mantém o som puro: "ti" não vira "tchi". Atenção: "time" ≠ "tchaime".',
+    spell:['t','tt','ed (após surdo)'],
+    ex:[{w:'time',t:'tempo'},{w:'team',t:'equipe'},{w:'water',t:'água'},{w:'better',t:'melhor'},{w:'walked',t:'andou'}]},
+  {id:'d',ipa:'d',category:'consonant',sub:'plosive',keyword:'dance',kt:'dançar',cls:'amber',
+    tip:'Língua nos alvéolos (atrás dos dentes), não nos dentes. Sem palatalização antes de "i".',
+    pt:'No PT-BR, "di" vira "dji" (palatalização). Em inglês NÃO: "dinner" ≠ "djiner". Mantenha o "d" puro antes de qualquer vogal.',
+    spell:['d','dd','ed (após sonoro)'],
+    ex:[{w:'dance',t:'dançar'},{w:'dinner',t:'jantar'},{w:'middle',t:'meio'},{w:'addict',t:'viciado'},{w:'played',t:'jogou'}]},
+  {id:'k',ipa:'k',category:'consonant',sub:'plosive',keyword:'card',kt:'cartão',cls:'sage',
+    tip:'Idêntico ao "c" duro / "qu" do português, mas com aspiração no início de palavras tônicas.',
+    pt:'Som idêntico ao "c" de "casa" ou "qu" de "queijo". Adicione um leve sopro em palavras como "cat".',
+    spell:['k','c','ck','qu','ch (raro)'],
+    ex:[{w:'card',t:'cartão'},{w:'cat',t:'gato'},{w:'kitchen',t:'cozinha'},{w:'back',t:'costas/voltar'},{w:'school',t:'escola'}]},
+  {id:'g',ipa:'g',category:'consonant',sub:'plosive',keyword:'green',kt:'verde',cls:'sage',
+    tip:'Idêntico ao "g" duro do português ("gato", "gola"). Som sonoro.',
+    pt:'Som idêntico ao "g" de "gato", "guerra". Sem dificuldades.',
+    spell:['g','gg','gh (raro)'],
+    ex:[{w:'green',t:'verde'},{w:'go',t:'ir'},{w:'big',t:'grande'},{w:'bigger',t:'maior'},{w:'ghost',t:'fantasma'}]},
+  {id:'tS',ipa:'tʃ',category:'consonant',sub:'affricate',keyword:'chess',kt:'xadrez',cls:'sage',
+    tip:'Som "tch", combinando /t/ + /ʃ/. Idêntico ao "tch" do português.',
+    pt:'Idêntico ao "tch" de "tchau" ou ao "ti" carioca de "time". Sem dificuldade.',
+    spell:['ch','tch','t (antes de u)'],
+    ex:[{w:'chess',t:'xadrez'},{w:'church',t:'igreja'},{w:'watch',t:'relógio/assistir'},{w:'teacher',t:'professor'},{w:'nature',t:'natureza'}]},
+  {id:'dZ',ipa:'dʒ',category:'consonant',sub:'affricate',keyword:'jam',kt:'geleia',cls:'sage',
+    tip:'Som "dj", combinando /d/ + /ʒ/. Idêntico ao "dj" do português.',
+    pt:'Idêntico ao "dj" de "adjetivo" ou ao "di" carioca de "dia". Som natural.',
+    spell:['j','g (antes de e/i/y)','dge','dg'],
+    ex:[{w:'jam',t:'geleia'},{w:'job',t:'trabalho'},{w:'page',t:'página'},{w:'bridge',t:'ponte'},{w:'judge',t:'juiz'}]},
+  {id:'f',ipa:'f',category:'consonant',sub:'fricative',keyword:'flower',kt:'flor',cls:'sage',
+    tip:'Idêntico ao "f" do português. Lábio inferior toca dentes superiores.',
+    pt:'Som idêntico. Sem dificuldades.',
+    spell:['f','ff','ph','gh (raro)'],
+    ex:[{w:'flower',t:'flor'},{w:'fish',t:'peixe'},{w:'coffee',t:'café'},{w:'phone',t:'telefone'},{w:'enough',t:'suficiente'}]},
+  {id:'v',ipa:'v',category:'consonant',sub:'fricative',keyword:'very',kt:'muito',cls:'sage',
+    tip:'Idêntico ao "v" do português. Lábio inferior nos dentes superiores, com vibração.',
+    pt:'Som idêntico. Brasileiros já distinguem bem /v/ de /b/, ao contrário de hispanohablantes.',
+    spell:['v','vv (raro)'],
+    ex:[{w:'very',t:'muito'},{w:'love',t:'amor'},{w:'have',t:'ter'},{w:'over',t:'sobre'},{w:'live',t:'viver'}]},
+  {id:'theta',ipa:'θ',category:'consonant',sub:'fricative',keyword:'think',kt:'pensar',cls:'terra',
+    tip:'Som interdental SURDO (sem vibração). Coloque a ponta da língua entre os dentes e sopre.',
+    pt:'Som inexistente em português. Brasileiros tendem a substituir por /t/, /f/ ou /s/. O segredo: a língua DEVE aparecer entre os dentes.',
+    spell:['th'],
+    ex:[{w:'think',t:'pensar'},{w:'three',t:'três'},{w:'thank',t:'agradecer'},{w:'birthday',t:'aniversário'},{w:'math',t:'matemática'},{w:'thirty',t:'trinta'}],
+    pairs:[{w1:'think',i1:'θɪŋk',w2:'sink',i2:'sɪŋk',m:'pensar vs afundar'},{w1:'thin',i1:'θɪn',w2:'tin',i2:'tɪn',m:'fino vs lata'}]},
+  {id:'eth',ipa:'ð',category:'consonant',sub:'fricative',keyword:'that',kt:'aquilo',cls:'terra',
+    tip:'Som interdental SONORO (com vibração). Mesma posição do /θ/, mas vibrando as cordas vocais.',
+    pt:'Inexistente em português. Brasileiros tendem a substituir por /d/. Atenção: aparece em palavras frequentíssimas (the, this, that, they, there).',
+    spell:['th'],
+    ex:[{w:'that',t:'aquilo/aquele'},{w:'this',t:'isto'},{w:'they',t:'eles/elas'},{w:'mother',t:'mãe'},{w:'brother',t:'irmão'},{w:'breathe',t:'respirar'}],
+    pairs:[{w1:'they',i1:'ðeɪ',w2:'day',i2:'deɪ',m:'eles vs dia'},{w1:'then',i1:'ðen',w2:'den',i2:'den',m:'então vs toca'}]},
+  {id:'s',ipa:'s',category:'consonant',sub:'fricative',keyword:'sister',kt:'irmã',cls:'sage',
+    tip:'Idêntico ao "s" surdo do português ("sapo", "casca").',
+    pt:'Som idêntico. Cuidado apenas: em final de sílaba, NÃO transformar em /z/ como o português faz às vezes.',
+    spell:['s','ss','c (antes de e/i/y)','sc'],
+    ex:[{w:'sister',t:'irmã'},{w:'see',t:'ver'},{w:'kiss',t:'beijo'},{w:'city',t:'cidade'},{w:'science',t:'ciência'}]},
+  {id:'z',ipa:'z',category:'consonant',sub:'fricative',keyword:'zero',kt:'zero',cls:'sage',
+    tip:'Idêntico ao "z" do português ("zebra", "casa").',
+    pt:'Som idêntico. Atenção apenas à grafia: "s" entre vogais geralmente é /z/ ("rose", "easy").',
+    spell:['z','zz','s (entre vogais)'],
+    ex:[{w:'zero',t:'zero'},{w:'zoo',t:'zoológico'},{w:'easy',t:'fácil'},{w:'rose',t:'rosa'},{w:'jazz',t:'jazz'}]},
+  {id:'S',ipa:'ʃ',category:'consonant',sub:'fricative',keyword:'shower',kt:'chuveiro',cls:'sage',
+    tip:'Idêntico ao "ch" do português ("chá", "chuva").',
+    pt:'Som idêntico ao "ch" de "chá", "chuva". Sem dificuldades.',
+    spell:['sh','ti (antes de on)','ci (antes de al)','ch (palavras francesas)'],
+    ex:[{w:'shower',t:'chuveiro'},{w:'she',t:'ela'},{w:'fish',t:'peixe'},{w:'station',t:'estação'},{w:'special',t:'especial'}]},
+  {id:'Z',ipa:'ʒ',category:'consonant',sub:'fricative',keyword:'decision',kt:'decisão',cls:'sage',
+    tip:'Idêntico ao "j" do português ("já", "jeito").',
+    pt:'Som idêntico ao "j" de "já", "jornal" ou ao "g" de "gente". Som menos frequente em inglês que em português.',
+    spell:['s (antes de ion/ure)','g (palavras francesas)'],
+    ex:[{w:'decision',t:'decisão'},{w:'pleasure',t:'prazer'},{w:'measure',t:'medir'},{w:'vision',t:'visão'},{w:'garage',t:'garagem'}]},
+  {id:'h',ipa:'h',category:'consonant',sub:'fricative',keyword:'happy',kt:'feliz',cls:'amber',
+    tip:'Som aspirado, fraco. Como um sopro suave saindo da garganta. Mais leve que o R brasileiro.',
+    pt:'Parecido com o R inicial do português brasileiro ("rato"), mas mais leve e aspirado, sem fricção forte. Cuidado: brasileiros tendem a exagerar a fricção.',
+    spell:['h','wh (em algumas palavras)'],
+    ex:[{w:'happy',t:'feliz'},{w:'hello',t:'olá'},{w:'house',t:'casa'},{w:'behind',t:'atrás'},{w:'who',t:'quem'}]},
+  {id:'m',ipa:'m',category:'consonant',sub:'nasal',keyword:'man',kt:'homem',cls:'sage',
+    tip:'Idêntico ao "m" do português. Lábios fechados, ar pelo nariz.',
+    pt:'Som idêntico. ATENÇÃO: em final de palavra ("name", "time"), o "m" deve ser pronunciado fechando os lábios — não nasalizar a vogal como no português.',
+    spell:['m','mm'],
+    ex:[{w:'man',t:'homem'},{w:'mother',t:'mãe'},{w:'name',t:'nome'},{w:'time',t:'tempo'},{w:'summer',t:'verão'}]},
+  {id:'n',ipa:'n',category:'consonant',sub:'nasal',keyword:'nice',kt:'legal',cls:'sage',
+    tip:'Idêntico ao "n" do português. Língua nos alvéolos, ar pelo nariz.',
+    pt:'Som idêntico. Mesma atenção do /m/: em final de palavra, pronuncie o "n" claramente, sem nasalizar a vogal anterior.',
+    spell:['n','nn','kn','gn'],
+    ex:[{w:'nice',t:'legal'},{w:'name',t:'nome'},{w:'sun',t:'sol'},{w:'know',t:'saber'},{w:'sign',t:'sinal'}]},
+  {id:'ng',ipa:'ŋ',category:'consonant',sub:'nasal',keyword:'singer',kt:'cantor',cls:'terra',
+    tip:'Nasal velar. Costas da língua tocam o palato mole, ar pelo nariz. Como o "n" final de "ping-pong".',
+    pt:'Existe foneticamente em português antes de /k/ e /g/ ("manga", "tanque"), mas como variante. Em inglês, é fonema independente e aparece sozinho no final de palavras (-ing).',
+    spell:['ng','n (antes de k/g)'],
+    ex:[{w:'singer',t:'cantor'},{w:'thing',t:'coisa'},{w:'long',t:'longo'},{w:'morning',t:'manhã'},{w:'thank',t:'agradecer'},{w:'English',t:'inglês'}],
+    pairs:[{w1:'sing',i1:'sɪŋ',w2:'sin',i2:'sɪn',m:'cantar vs pecado'},{w1:'thing',i1:'θɪŋ',w2:'thin',i2:'θɪn',m:'coisa vs fino'}]},
+  {id:'l',ipa:'l',category:'consonant',sub:'liquid',keyword:'like',kt:'gostar',cls:'amber',
+    tip:'Língua nos alvéolos. Em INÍCIO de sílaba, parecido com o "l" português. Em FINAL, é "dark L" — mais velar.',
+    pt:'PT-BR transforma "l" final em /u/ ("Brasil" → "Brasiu"). Em inglês, mantenha o "l" final SEMPRE como consoante. "Hill" não é "hiu".',
+    spell:['l','ll'],
+    ex:[{w:'like',t:'gostar'},{w:'light',t:'luz'},{w:'school',t:'escola'},{w:'people',t:'pessoas'},{w:'feel',t:'sentir'},{w:'hill',t:'colina'}]},
+  {id:'r',ipa:'r',category:'consonant',sub:'liquid',keyword:'red',kt:'vermelho',cls:'terra',
+    tip:'Língua curvada para trás (retroflexo), pontas dos lábios levemente arredondadas. NÃO toca o céu da boca.',
+    pt:'Não existe em português. Brasileiros tendem a usar o R aspirado (como em "rato") ou o R caipira. O R inglês é único: pense em algo entre o R caipira e um "w" leve.',
+    spell:['r','rr','wr'],
+    ex:[{w:'red',t:'vermelho'},{w:'right',t:'certo/direita'},{w:'very',t:'muito'},{w:'sorry',t:'desculpa'},{w:'write',t:'escrever'},{w:'car',t:'carro'}]},
+  {id:'w',ipa:'w',category:'consonant',sub:'semivowel',keyword:'war',kt:'guerra',cls:'sage',
+    tip:'Idêntico ao "u" semivogal do português ("quase", "água").',
+    pt:'Som idêntico ao "u" de "qualquer", "quando". Sem dificuldades.',
+    spell:['w','wh','u (em qu)'],
+    ex:[{w:'war',t:'guerra'},{w:'want',t:'querer'},{w:'water',t:'água'},{w:'one',t:'um'},{w:'queen',t:'rainha'}]},
+  {id:'j',ipa:'j',category:'consonant',sub:'semivowel',keyword:'yes',kt:'sim',cls:'sage',
+    tip:'Idêntico ao "i" semivogal do português ("pai", "ioga"). Atenção à grafia: em inglês é "y", não "j"!',
+    pt:'Som idêntico ao "i" de "ioga", "papai". Cuidado com a grafia: a letra "j" em inglês é /dʒ/, não /j/.',
+    spell:['y','i (antes de vogal)','j (em palavras estrangeiras)'],
+    ex:[{w:'yes',t:'sim'},{w:'you',t:'você'},{w:'year',t:'ano'},{w:'use',t:'usar'},{w:'few',t:'poucos'}]}
+];
+
+const SUB_LABELS = {
+  monophthong:'Monoftongos', diphthong:'Ditongos',
+  plosive:'Oclusivas', affricate:'Africadas',
+  fricative:'Fricativas', nasal:'Nasais',
+  liquid:'Líquidas', semivowel:'Semivogais'
+};
+const CLS_LABELS = {
+  sage:{label:'Existe em PT-BR',desc:'Vantagem natural'},
+  amber:{label:'Aproximado',desc:'Diferenças sutis'},
+  terra:{label:'Novo / Desafiador',desc:'Som inexistente em português'}
 };
 
-// Labels e ordem das categorias por módulo
-const CATEGORY_CONFIG = {
-  adverbs: {
-    label: 'Categoria',
-    order: ['frequency', 'manner', 'time', 'place', 'degree', 'certainty'],
-    labels: {
-      frequency: 'Frequência',
-      manner: 'Modo',
-      time: 'Tempo',
-      place: 'Lugar',
-      degree: 'Grau',
-      certainty: 'Certeza / Foco'
-    }
-  },
-  conjunctions: {
-    label: 'Tipo',
-    order: ['coordinating', 'subord-cause', 'subord-time', 'subord-condition', 'subord-concession', 'subord-purpose', 'correlative'],
-    labels: {
-      'coordinating': 'Coordenativa',
-      'subord-cause': 'Causa',
-      'subord-time': 'Tempo',
-      'subord-condition': 'Condição',
-      'subord-concession': 'Concessão',
-      'subord-purpose': 'Finalidade',
-      'correlative': 'Correlativa'
-    }
-  },
-  linking: {
-    label: 'Função',
-    order: ['addition', 'contrast', 'consequence', 'exemplification', 'sequence', 'conclusion', 'reformulation'],
-    labels: {
-      addition: 'Adição',
-      contrast: 'Contraste',
-      consequence: 'Consequência',
-      exemplification: 'Exemplo',
-      sequence: 'Sequência',
-      conclusion: 'Conclusão',
-      reformulation: 'Reformulação'
-    }
-  },
-  collocations: {
-    label: 'Padrão',
-    order: ['verb-noun', 'adj-noun', 'adv-adj', 'verb-adv', 'noun-noun'],
-    labels: {
-      'verb-noun': 'Verbo + Subst.',
-      'adj-noun': 'Adj. + Subst.',
-      'adv-adj': 'Adv. + Adj.',
-      'verb-adv': 'Verbo + Adv.',
-      'noun-noun': 'Subst. + Subst.'
-    }
-  },
-  prepositions: {
-    label: 'Grupo',
-    order: ['time', 'place', 'movement', 'verb-prep', 'adj-prep', 'noun-prep'],
-    labels: {
-      time: 'Tempo',
-      place: 'Lugar',
-      movement: 'Movimento',
-      'verb-prep': 'Verbo + Prep.',
-      'adj-prep': 'Adj. + Prep.',
-      'noun-prep': 'Subst. + Prep.'
-    }
-  }
-};
+// ═══════════════════════════════════════════════════════════════
+//   TTS — Web Speech API
+// ═══════════════════════════════════════════════════════════════
 
-// ═══════════════════════════════════════════════════════════════
-//   TTS
-// ═══════════════════════════════════════════════════════════════
 function speak(text, rate = 0.85) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
@@ -693,6 +1042,7 @@ function speak(text, rate = 0.85) {
   u.pitch = 1.0;
   window.speechSynthesis.speak(u);
 }
+
 function attachAudio(btn, text) {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -703,241 +1053,97 @@ function attachAudio(btn, text) {
 }
 
 // ═══════════════════════════════════════════════════════════════
+//   ÍCONES
+// ═══════════════════════════════════════════════════════════════
+
+const ICON_VOLUME = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+
+// ═══════════════════════════════════════════════════════════════
+//   CARDS / GRIDS
+// ═══════════════════════════════════════════════════════════════
+
+function buildCard(s) {
+  const btn = document.createElement('button');
+  btn.className = `scard scard--${s.cls}`;
+  btn.setAttribute('aria-label', `${s.ipa} — ${s.keyword}`);
+  btn.innerHTML = `
+    <span class="scard__dot scard__dot--${s.cls}"></span>
+    <span class="scard__ipa scard__ipa--${s.cls}">${s.ipa}</span>
+    <span class="scard__keyword">${s.keyword}</span>
+  `;
+  btn.addEventListener('click', () => openModal(s));
+  return btn;
+}
+
+function buildListItem(s) {
+  const btn = document.createElement('button');
+  btn.className = 'slist__item';
+  btn.innerHTML = `
+    <span class="slist__ipa slist__ipa--${s.cls}">${s.ipa}</span>
+    <div class="slist__main">
+      <div class="slist__keyword">${s.keyword}</div>
+      <div class="slist__trans">${s.kt} · ${SUB_LABELS[s.sub]}</div>
+    </div>
+    <span class="slist__chev">→</span>
+  `;
+  btn.addEventListener('click', () => openModal(s));
+  return btn;
+}
+
+function renderGrids() {
+  const monoEl = document.getElementById('grid-monophthongs');
+  const diphEl = document.getElementById('grid-diphthongs');
+  const consEl = document.getElementById('grid-consonants');
+
+  SOUNDS.filter(s => s.sub === 'monophthong').forEach(s => monoEl.appendChild(buildCard(s)));
+  SOUNDS.filter(s => s.sub === 'diphthong').forEach(s => diphEl.appendChild(buildCard(s)));
+  SOUNDS.filter(s => s.category === 'consonant').forEach(s => consEl.appendChild(buildCard(s)));
+
+  document.getElementById('list-new').innerHTML = '';
+  SOUNDS.filter(s => s.cls === 'terra').forEach(s => document.getElementById('list-new').appendChild(buildListItem(s)));
+
+  document.getElementById('list-approx').innerHTML = '';
+  SOUNDS.filter(s => s.cls === 'amber').forEach(s => document.getElementById('list-approx').appendChild(buildListItem(s)));
+
+  // Counts
+  const vowelCount = SOUNDS.filter(s => s.category === 'vowel').length;
+  const consonantCount = SOUNDS.filter(s => s.category === 'consonant').length;
+  document.getElementById('vowels-count').textContent = `${vowelCount} sons`;
+  document.getElementById('consonants-count').textContent = `${consonantCount} sons`;
+}
+
+// ═══════════════════════════════════════════════════════════════
 //   STATS
 // ═══════════════════════════════════════════════════════════════
-function renderStats() {
-  const el = document.getElementById('stats');
-  el.innerHTML = MODULES.map(m => {
-    const count = m.data.length;
-    const isReady = m.status === 'ready';
-    return `
-      <div class="stat">
-        <div class="stat__num ${isReady ? '' : 'stat__num--soon'}">${isReady ? count : 'soon'}</div>
-        <div class="stat__label">${m.label}</div>
-      </div>
-    `;
-  }).join('');
-}
 
-// ═══════════════════════════════════════════════════════════════
-//   MODULE TABS
-// ═══════════════════════════════════════════════════════════════
-function renderModuleTabs() {
-  const el = document.getElementById('module-tabs');
-  el.innerHTML = MODULES.map(m => {
-    const isActive = state.module === m.id;
-    const isReady = m.status === 'ready';
-    const count = isReady ? m.data.length : `soon`;
-    return `
-      <button class="module-tab ${isActive ? 'is-active' : ''} ${!isReady ? 'is-soon' : ''}"
-              data-module="${m.id}" ${!isReady ? 'disabled' : ''}>
-        <span class="module-tab__num">${m.num}</span>
-        <span>${m.label}</span>
-        <span class="module-tab__count">${count}</span>
-      </button>
-    `;
-  }).join('');
-  el.querySelectorAll('.module-tab').forEach(btn => {
-    if (btn.disabled) return;
-    btn.addEventListener('click', () => {
-      state.module = btn.dataset.module;
-      state.search = '';
-      state.cls = 'all';
-      state.register = 'all';
-      state.category = 'all';
-      renderModuleTabs();
-      renderModuleContent();
-    });
-  });
-}
+function computeStats() {
+  const total = SOUNDS.length;
+  const sage = SOUNDS.filter(s => s.cls === 'sage').length;
+  const amber = SOUNDS.filter(s => s.cls === 'amber').length;
+  const terra = SOUNDS.filter(s => s.cls === 'terra').length;
 
-// ═══════════════════════════════════════════════════════════════
-//   MODULE CONTENT
-// ═══════════════════════════════════════════════════════════════
-function renderModuleContent() {
-  const m = MODULES.find(m => m.id === state.module);
-  const el = document.getElementById('module-content');
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-sage').textContent = sage;
+  document.getElementById('stat-amber').textContent = amber;
+  document.getElementById('stat-terra').textContent = terra;
 
-  if (m.status === 'soon') {
-    el.innerHTML = `
-      <div class="module-soon">
-        <div class="module-soon__icon">§</div>
-        <h3 class="module-soon__title">Em breve · ${m.label}</h3>
-        <p class="module-soon__text">
-          Este módulo está sendo curado. <strong>Aproximadamente ${m.expected} entradas</strong> serão
-          adicionadas em fase futura, mantendo o mesmo padrão editorial: IPA, áudio, exemplos com tradução,
-          armadilha BR e sinônimos contrastivos.
-        </p>
-        <div class="module-soon__badge">Próxima fase</div>
-      </div>
-    `;
-    return;
-  }
-
-  const catConfig = CATEGORY_CONFIG[state.module];
-  const categoryFilters = catConfig ? `
-      <div class="filters" style="margin-top:var(--sp-1)">
-        <button class="filter-chip ${state.category === 'all' ? 'is-active' : ''}" data-category="all">${catConfig.label}: Todas</button>
-        ${catConfig.order.map(cat => `
-          <button class="filter-chip ${state.category === cat ? 'is-active' : ''}" data-category="${cat}">${catConfig.labels[cat]}</button>
-        `).join('')}
-      </div>
-  ` : '';
-
-  el.innerHTML = `
-    <div class="controls">
-      <div class="search">
-        <svg class="search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input type="text" id="search-input" class="search__input"
-               placeholder="Buscar por palavra, significado, exemplo..." value="${state.search}">
-      </div>
-      <div class="filters">
-        <button class="filter-chip ${state.cls === 'all' ? 'is-active' : ''}" data-cls="all">Todos</button>
-        <button class="filter-chip ${state.cls === 'sage' ? 'is-active' : ''}" data-cls="sage">
-          <span class="filter-chip__dot filter-chip__dot--sage"></span>Alta freq.
-        </button>
-        <button class="filter-chip ${state.cls === 'amber' ? 'is-active' : ''}" data-cls="amber">
-          <span class="filter-chip__dot filter-chip__dot--amber"></span>Atenção
-        </button>
-        <button class="filter-chip ${state.cls === 'terra' ? 'is-active' : ''}" data-cls="terra">
-          <span class="filter-chip__dot filter-chip__dot--terra"></span>Crítico
-        </button>
-        <button class="filter-chip ${state.register === 'formal' ? 'is-active' : ''}" data-register="formal">Formal</button>
-        <button class="filter-chip ${state.register === 'informal' ? 'is-active' : ''}" data-register="informal">Informal</button>
-      </div>
-      ${categoryFilters}
-      <div class="results-count" id="results-count">—</div>
-    </div>
-    <div class="entries" id="entries"></div>
-  `;
-
-  // Listeners
-  const searchInput = document.getElementById('search-input');
-  let searchTimer;
-  searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      state.search = e.target.value.toLowerCase().trim();
-      renderEntries();
-    }, 200);
-  });
-
-  document.querySelectorAll('.filter-chip[data-cls]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.cls = btn.dataset.cls;
-      renderModuleContent();
-    });
-  });
-  document.querySelectorAll('.filter-chip[data-register]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.register = state.register === btn.dataset.register ? 'all' : btn.dataset.register;
-      renderModuleContent();
-    });
-  });
-  document.querySelectorAll('.filter-chip[data-category]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.category = btn.dataset.category;
-      renderModuleContent();
-    });
-  });
-
-  renderEntries();
-}
-
-// ═══════════════════════════════════════════════════════════════
-//   ENTRIES
-// ═══════════════════════════════════════════════════════════════
-function getFilteredEntries() {
-  const m = MODULES.find(m => m.id === state.module);
-  return m.data.filter(entry => {
-    if (state.cls !== 'all' && entry.cls !== state.cls) return false;
-    if (state.register !== 'all' && entry.register !== state.register) return false;
-    if (state.category !== 'all' && entry.category !== state.category) return false;
-    if (state.search) {
-      const q = state.search;
-      const haystack = [
-        entry.phrase || entry.word,
-        entry.meaning,
-        entry.ipa,
-        ...(entry.ex || []).flatMap(e => [e.en, e.pt])
-      ].join(' ').toLowerCase();
-      if (!haystack.includes(q)) return false;
-    }
-    return true;
-  });
-}
-
-function renderEntries() {
-  const entries = getFilteredEntries();
-  const el = document.getElementById('entries');
-  const countEl = document.getElementById('results-count');
-
-  if (countEl) {
-    countEl.textContent = `${entries.length} de ${MODULES.find(m => m.id === state.module).data.length} entradas`;
-  }
-
-  if (entries.length === 0) {
-    el.innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="empty-state__icon">§</div>
-        <div class="empty-state__text">Nenhuma entrada corresponde aos filtros</div>
-      </div>
-    `;
-    return;
-  }
-
-  el.innerHTML = entries.map(entry => buildCard(entry)).join('');
-  el.querySelectorAll('.entry-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.dataset.id;
-      const entry = entries.find(e => e.id === id);
-      openModal(entry);
-    });
-  });
-}
-
-function buildCard(entry) {
-  const phrase = entry.phrase || entry.word;
-  const freqDots = Array.from({length:5}, (_,i) => i < entry.freq).map(active =>
-    `<span class="entry-card__freq-dot ${active ? 'is-active' : ''}"></span>`
-  ).join('');
-  const tags = [];
-  if (entry.separable === true) tags.push('separable');
-  if (entry.separable === false) tags.push('inseparable');
-  if (entry.category) {
-    const catLabel = CATEGORY_CONFIG[state.module]?.labels[entry.category] || entry.category;
-    tags.push(catLabel.toLowerCase());
-  }
-  if (entry.register && entry.register !== 'neutral') tags.push(entry.register);
-  return `
-    <button class="entry-card entry-card--${entry.cls}" data-id="${entry.id}">
-      <div class="entry-card__header">
-        <div style="flex:1;min-width:0">
-          <div class="entry-card__phrase">${phrase}</div>
-          <div class="entry-card__ipa">/${entry.ipa}/</div>
-        </div>
-        <div class="entry-card__freq" title="Frequência: ${entry.freq}/5">${freqDots}</div>
-      </div>
-      <div class="entry-card__meaning">${entry.meaning}</div>
-      <div class="entry-card__footer">
-        <div class="entry-card__tags">
-          ${tags.map(t => `<span class="entry-card__tag">${t}</span>`).join('')}
-        </div>
-      </div>
-    </button>
-  `;
+  document.getElementById('legend-sage').textContent = sage;
+  document.getElementById('legend-amber').textContent = amber;
+  document.getElementById('legend-terra').textContent = terra;
+  document.getElementById('legend-sage-pct').textContent = `${Math.round(sage/total*100)}% do total`;
+  document.getElementById('legend-amber-pct').textContent = `${Math.round(amber/total*100)}% do total`;
+  document.getElementById('legend-terra-pct').textContent = `${Math.round(terra/total*100)}% do total`;
 }
 
 // ═══════════════════════════════════════════════════════════════
 //   MODAL
 // ═══════════════════════════════════════════════════════════════
+
 const modal = document.getElementById('modal');
 const modalEyebrow = document.getElementById('modal-eyebrow');
-const modalPhrase = document.getElementById('modal-phrase');
 const modalIpa = document.getElementById('modal-ipa');
+const modalKeyword = document.getElementById('modal-keyword');
+const modalKeywordTrans = document.getElementById('modal-keyword-trans');
 const modalAudio = document.getElementById('modal-audio');
 const modalBody = document.getElementById('modal-body');
 
@@ -949,114 +1155,97 @@ modalAudio.addEventListener('click', () => {
   setTimeout(() => modalAudio.classList.remove('is-playing'), 800);
 });
 
-function openModal(entry) {
-  const phrase = entry.phrase || entry.word;
-  currentAudioWord = phrase;
-  modalEyebrow.textContent = `${MODULES.find(m => m.id === state.module).label} · ${CLS_CONFIG[entry.cls].label}`;
-  modalPhrase.textContent = phrase;
-  modalIpa.textContent = `/${entry.ipa}/`;
+function openModal(s) {
+  currentAudioWord = s.keyword;
+  modalEyebrow.className = `modal__eyebrow modal__eyebrow--${s.cls}`;
+  modalEyebrow.textContent = `${SUB_LABELS[s.sub]} · ${CLS_LABELS[s.cls].label}`;
+  modalIpa.className = `modal__ipa modal__ipa--${s.cls}`;
+  modalIpa.textContent = s.ipa;
+  modalKeyword.textContent = s.keyword;
+  modalKeywordTrans.textContent = s.kt;
 
   let html = '';
 
-  // Meta
-  const metaItems = [];
-  metaItems.push({label:'Frequência', value:`★ ${entry.freq}/5`});
-  if (entry.separable !== undefined) {
-    metaItems.push({label:'Separável', value: entry.separable ? 'Sim' : 'Não'});
-  }
-  if (entry.category) {
-    const catLabel = CATEGORY_CONFIG[state.module]?.labels[entry.category] || entry.category;
-    metaItems.push({label:'Categoria', value: catLabel});
-  }
-  if (entry.register) {
-    const regLabels = {neutral:'Neutro', formal:'Formal', informal:'Informal'};
-    metaItems.push({label:'Registro', value: regLabels[entry.register] || entry.register});
-  }
-  html += `<div class="modal__row">${metaItems.map(m => `
-    <div class="meta-pill">
-      <div class="meta-pill__label">${m.label}</div>
-      <div class="meta-pill__value">${m.value}</div>
-    </div>
-  `).join('')}</div>`;
-
-  // Posição (apenas para advérbios)
-  if (entry.position) {
-    html += `
-      <div class="modal__block">
-        <div class="modal__block-eyebrow">Posição na frase</div>
-        <div class="modal__meaning" style="font-size:var(--fs-sm);font-weight:400;color:var(--paper-80)">${entry.position}</div>
-      </div>
-    `;
-  }
-
-  // Estrutura / Combinação (apenas para preposições)
-  if (entry.structure) {
-    html += `
-      <div class="modal__block">
-        <div class="modal__block-eyebrow">Estrutura · combinação</div>
-        <div class="modal__meaning" style="font-family:var(--font-mono);font-size:var(--fs-sm);font-weight:400;color:var(--gold);border-left-color:var(--gold)">${entry.structure}</div>
-      </div>
-    `;
-  }
-
-  // Significado
+  // Tip
   html += `
     <div class="modal__block">
-      <div class="modal__block-eyebrow">Significado</div>
-      <div class="modal__meaning">${entry.meaning}</div>
+      <div class="modal__block-eyebrow">Dica de produção</div>
+      <div class="modal__tip">${s.tip}</div>
     </div>
   `;
 
-  // Exemplos
-  if (entry.ex && entry.ex.length) {
+  // Comparação
+  html += `
+    <div class="modal__block">
+      <div class="modal__block-eyebrow">Comparação com o português</div>
+      <div class="modal__compare">${s.pt}</div>
+    </div>
+  `;
+
+  // Spellings
+  if (s.spell && s.spell.length) {
     html += `
       <div class="modal__block">
-        <div class="modal__block-eyebrow">Exemplos · ${entry.ex.length} contextos</div>
-        <div class="examples">
-          ${entry.ex.map(ex => `
-            <div class="example">
-              <div class="example__main">
-                <div class="example__en">${ex.en}</div>
-                <div class="example__pt">${ex.pt}</div>
+        <div class="modal__block-eyebrow">Grafias frequentes</div>
+        <div class="modal__chips">
+          ${s.spell.map(sp => `<span class="modal__chip">${sp}</span>`).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // Examples
+  html += `
+    <div class="modal__block">
+      <div class="modal__block-eyebrow">Exemplos · ${s.ex.length} palavras</div>
+      <div class="modal__examples">
+        ${s.ex.map((ex,i) => `
+          <div class="example">
+            <div class="example__main">
+              <div class="example__word">${ex.w}</div>
+              <div class="example__trans">${ex.t}</div>
+            </div>
+            <button class="audio-btn audio-btn--sm" data-audio="${ex.w}" aria-label="Tocar ${ex.w}">${ICON_VOLUME}</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  // Minimal pairs
+  if (s.pairs && s.pairs.length) {
+    html += `
+      <div class="modal__block">
+        <div class="modal__block-eyebrow" style="color:var(--terra)">⚠ Pares mínimos · contrastes críticos</div>
+        ${s.pairs.map(p => `
+          <div class="pair">
+            <div class="pair__row">
+              <div class="pair__side">
+                <button class="audio-btn audio-btn--sm" data-audio="${p.w1}" aria-label="Tocar ${p.w1}">${ICON_VOLUME}</button>
+                <div>
+                  <div class="pair__word">${p.w1}</div>
+                  <div class="pair__ipa">/${p.i1}/</div>
+                </div>
               </div>
-              <button class="audio-btn audio-btn--sm" data-audio="${ex.en.replace(/"/g, '&quot;')}" aria-label="Tocar exemplo">${ICON_VOLUME}</button>
+              <span class="pair__vs">vs</span>
+              <div class="pair__side">
+                <button class="audio-btn audio-btn--sm" data-audio="${p.w2}" aria-label="Tocar ${p.w2}">${ICON_VOLUME}</button>
+                <div>
+                  <div class="pair__word">${p.w2}</div>
+                  <div class="pair__ipa">/${p.i2}/</div>
+                </div>
+              </div>
             </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  // Armadilha BR
-  if (entry.trap) {
-    html += `
-      <div class="modal__block">
-        <div class="modal__block-eyebrow" style="color:var(--terra)">⚠ Armadilha BR</div>
-        <div class="modal__trap">${entry.trap}</div>
-      </div>
-    `;
-  }
-
-  // Sinônimos
-  if (entry.similar && entry.similar.length) {
-    html += `
-      <div class="modal__block">
-        <div class="modal__block-eyebrow">Veja também · contraste</div>
-        <div class="similar-list">
-          ${entry.similar.map(s => `
-            <div class="similar-item">
-              <button class="audio-btn audio-btn--sm" data-audio="${(s.phrase || s.word).replace(/"/g, '&quot;')}" aria-label="Tocar">${ICON_VOLUME}</button>
-              <div class="similar-item__phrase">${s.phrase || s.word}</div>
-              <div class="similar-item__sep">→</div>
-              <div class="similar-item__meaning">${s.meaning}</div>
-            </div>
-          `).join('')}
-        </div>
+            <div class="pair__meaning">${p.m}</div>
+          </div>
+        `).join('')}
       </div>
     `;
   }
 
   modalBody.innerHTML = html;
+
+  // Attach audio handlers
   modalBody.querySelectorAll('[data-audio]').forEach(btn => {
     attachAudio(btn, btn.getAttribute('data-audio'));
   });
@@ -1078,6 +1267,24 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ═══════════════════════════════════════════════════════════════
+//   PROGRESS BAR
+// ═══════════════════════════════════════════════════════════════
+
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progress.style.width = scrolled + '%';
+}, { passive: true });
+
+// ═══════════════════════════════════════════════════════════════
+//   INIT
+// ═══════════════════════════════════════════════════════════════
+
+renderGrids();
+computeStats();
+
+// ═══════════════════════════════════════════════════════════════
 //   THEME TOGGLE
 // ═══════════════════════════════════════════════════════════════
 const themeToggle = document.getElementById('theme-toggle');
@@ -1092,9 +1299,10 @@ function setTheme(theme) {
     htmlEl.classList.remove('theme-light');
     themeColorMeta?.setAttribute('content', '#0A1220');
   }
-  try { localStorage.setItem('connectors-theme', theme); } catch(e) {}
+  try { localStorage.setItem('phonetics-theme', theme); } catch(e) {}
 }
 
+// Sincroniza meta theme-color com o estado inicial (já aplicado pelo anti-flash)
 if (htmlEl.classList.contains('theme-light')) {
   themeColorMeta?.setAttribute('content', '#F5F1E8');
 }
@@ -1104,23 +1312,7 @@ themeToggle.addEventListener('click', () => {
   setTheme(isLight ? 'dark' : 'light');
 });
 
-// ═══════════════════════════════════════════════════════════════
-//   PROGRESS
-// ═══════════════════════════════════════════════════════════════
-const progress = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-  progress.style.width = scrolled + '%';
-}, { passive: true });
-
-// ═══════════════════════════════════════════════════════════════
-//   INIT
-// ═══════════════════════════════════════════════════════════════
-renderStats();
-renderModuleTabs();
-renderModuleContent();
-
+// Service Worker registration (PWA)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
