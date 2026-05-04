@@ -537,9 +537,6 @@
       border: 1px solid var(--line);
     }
     html[data-theme="light"] .hero-svg { background: rgba(10,18,32,.04); }
-      font-family: var(--font-mono); color: var(--gold); letter-spacing: .18em;
-      text-transform: uppercase; font-size: .72rem; font-weight: 600;
-    }
     h1, h2, h3 { font-family: var(--font-display); color: var(--paper); margin: 0; line-height: 1.05; letter-spacing: -.03em; }
     h1 em { color: var(--gold); font-style: italic; }
 
@@ -1020,12 +1017,24 @@
       transition: border-color var(--dur-fast) var(--ease-out);
     }
     .update-banner__close:hover { border-color: var(--paper); color: var(--paper); }
-    /* Quando banner aparece, deslocar topbar e conteúdo */
-    body.has-update-banner .topbar { top: 70px; }
-    body.has-update-banner main { padding-top: 140px; }
+    /* Banner compacto: não desloca o app e evita o “buraco” gigante no mobile */
+    body.has-update-banner .topbar { top: 0; }
+    body.has-update-banner main { padding-top: 70px; }
     @media (max-width: 720px) {
-      body.has-update-banner .topbar { top: 200px; }
-      body.has-update-banner main { padding-top: 270px; }
+      .update-banner {
+        top: auto;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        border: 1px solid var(--gold-line);
+        border-radius: var(--r-md);
+        justify-content: flex-start;
+        padding: var(--sp-3);
+      }
+      .update-banner__text { flex-basis: calc(100% - 42px); font-size: 0.72rem; line-height: 1.35; }
+      .update-banner__btn { margin-left: 26px; }
+      body.has-update-banner .topbar { top: 0; }
+      body.has-update-banner main { padding-top: 70px; }
     }
 
     /* ── Avatar (gerado a partir da inicial do email) ── */
@@ -1782,6 +1791,21 @@
       .kpi strong { font-size: var(--fs-2xl); }
     }
 
+
+    /* Ajustes finais mobile/tablet para GitHub/Netlify */
+    @media (max-width: 720px) {
+      .topbar-inner { gap: var(--sp-2); padding-block: var(--sp-3); }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-kicker { font-size: 0.58rem; letter-spacing: 0.14em; }
+      .brand-name { font-size: 0.78rem; max-width: 42vw; }
+      .actions { gap: 6px; }
+      .theme-toggle, .cloud-chip, .actions-overflow__trigger { width: 34px; height: 34px; min-height: 34px; }
+      .hero { padding-block: var(--sp-6) var(--sp-5); }
+      .hero__meta { gap: var(--sp-2); font-size: 0.58rem; }
+      .hero__title { max-width: 100%; font-size: clamp(2rem, 12vw, 3rem); }
+      .card { padding: var(--sp-4); }
+    }
+
     /* ── ACESSIBILIDADE ── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -2500,6 +2524,7 @@
           entradaPerc: num($('entradaPerc').value),
           empresaNome: $('empresaNome').value,
           empresaContato: $('empresaContato').value,
+          empresaEndereco: $('empresaEndereco').value,
           validadeDias: num($('validadeDias').value)
         },
         parametros: {
@@ -2704,15 +2729,16 @@
     function addEnvironment() {
       const est = estimateEnvironment();
       const tipo = $('envTipo').value;
-      const env = { id: Date.now(), tipo, ...est };
+      const envId = Date.now();
+      const env = { id: envId, tipo, ...est };
       state.ambientes.push(env);
 
       const suffix = ` · ${tipo}`;
-      state.items.push({ nome: `MDF BP 18mm estimado${suffix}`, categoria: 'Chapa/Painel', qtd: est.chapas, preco: num($('envPrecoChapa').value) });
-      state.items.push({ nome: `Fita de borda estimada${suffix}`, categoria: 'Acabamento', qtd: est.fitaM, preco: num($('envPrecoFita').value) });
-      if (est.dobradicas > 0) state.items.push({ nome: `Dobradiça slow motion estimada${suffix}`, categoria: 'Ferragem', qtd: est.dobradicas, preco: num($('envPrecoDob').value) });
-      if (est.corredicas > 0) state.items.push({ nome: `Corrediça estimada${suffix}`, categoria: 'Ferragem', qtd: est.corredicas, preco: num($('envPrecoCorr').value) });
-      state.costs.push({ nome: `Mão de obra estimada${suffix}`, tipo: 'Custo direto', valor: est.horas * 65, obs: `${est.horas} horas estimadas x R$ 65/h` });
+      state.items.push({ envId, nome: `MDF BP 18mm estimado${suffix}`, categoria: 'Chapa/Painel', qtd: est.chapas, preco: num($('envPrecoChapa').value) });
+      state.items.push({ envId, nome: `Fita de borda estimada${suffix}`, categoria: 'Acabamento', qtd: est.fitaM, preco: num($('envPrecoFita').value) });
+      if (est.dobradicas > 0) state.items.push({ envId, nome: `Dobradiça slow motion estimada${suffix}`, categoria: 'Ferragem', qtd: est.dobradicas, preco: num($('envPrecoDob').value) });
+      if (est.corredicas > 0) state.items.push({ envId, nome: `Corrediça estimada${suffix}`, categoria: 'Ferragem', qtd: est.corredicas, preco: num($('envPrecoCorr').value) });
+      state.costs.push({ envId, nome: `Mão de obra estimada${suffix}`, tipo: 'Custo direto', valor: est.horas * 65, obs: `${est.horas} horas estimadas x R$ 65/h` });
       renderAll();
       alert('Ambiente adicionado e materiais estimados gerados.');
     }
@@ -2747,7 +2773,14 @@
       `).join('');
     }
 
-    window.removeEnvironment = (i) => { state.ambientes.splice(i, 1); renderAll(); };
+    window.removeEnvironment = (i) => {
+      const env = state.ambientes[i];
+      if (!env) return;
+      state.ambientes.splice(i, 1);
+      state.items = state.items.filter(item => item.envId !== env.id);
+      state.costs = state.costs.filter(cost => cost.envId !== env.id);
+      renderAll();
+    };
 
     /* Editar ambiente: carrega valores no formulário */
     window.editEnvironment = (i) => {
@@ -2760,8 +2793,10 @@
       $('envModulos').value = e.modulos;
       if ($('envPortas')) $('envPortas').value = e.portas || 0;
       if ($('envGavetas')) $('envGavetas').value = e.gavetas || 0;
-      if ($('envComplexidade')) $('envComplexidade').value = e.complexidade || 'Média';
-      // Remove o item — ao clicar adicionar, será re-criado com os novos valores
+      if ($('envComplexidade')) $('envComplexidade').value = String(e.complexidade || 1.12);
+      // Remove ambiente e lançamentos automáticos vinculados — ao adicionar, recria com os novos valores
+      state.items = state.items.filter(item => item.envId !== e.id);
+      state.costs = state.costs.filter(cost => cost.envId !== e.id);
       state.ambientes.splice(i, 1);
       renderAll();
       $('envTipo').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2904,7 +2939,7 @@
       $('kpiPrecoDesconto').textContent = BRL.format(k.precoDesconto);
       $('kpiCdPerc').textContent = PCT.format(k.baseCusto ? k.custoDireto / k.baseCusto : 0);
       $('kpiCiPerc').textContent = PCT.format(k.baseCusto ? k.custoIndireto / k.baseCusto : 0);
-      $('kpiLucroReal').textContent = BRL.format(k.margemLiquida);
+      $('kpiLucroReal').textContent = BRL.format(k.preco > 0 ? k.lucro / k.preco : 0);
       const risk = k.margemLiquida < .18 ? 'Alto' : k.margemLiquida < .25 ? 'Médio' : 'Baixo';
       $('kpiRisco').textContent = risk;
       const setW = (id, value) => $(id).style.width = Math.max(0, Math.min(100, value * 100)).toFixed(1) + '%';
@@ -3289,7 +3324,7 @@
           { label: 'Custo direto', value: k.custoDireto, color: CHART.sage },
           { label: 'Custo indireto', value: k.custoIndireto, color: CHART.info },
           { label: 'Despesas + impostos', value: k.despesas + k.impostosFixos, color: CHART.terra },
-          { label: 'Margem (lucro)', value: Math.max(0, k.preco - k.baseCusto - k.despesas - k.impostosFixos), color: '#A87FCC' }
+          { label: 'Margem (lucro)', value: Math.max(0, k.lucro), color: '#A87FCC' }
         ].filter(s => s.value > 0);
         elPrecoComp.innerHTML = chartStacked(segs);
       }
@@ -3297,7 +3332,7 @@
       // Simulações — curva desconto-vs-margem
       const elSim = document.getElementById('chart-simulacoes');
       if (elSim) {
-        elSim.innerHTML = chartDiscountCurve(k.baseCusto + k.despesas + k.impostosFixos, k.preco);
+        elSim.innerHTML = chartDiscountCurve(k.baseCusto, k.preco);
       }
 
       // Histórico — barras por mês
@@ -3309,7 +3344,7 @@
           hist.forEach(h => {
             const d = new Date(h.savedAt || Date.now());
             const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-            monthMap[key] = (monthMap[key] || 0) + (h.totals?.preco || 0);
+            monthMap[key] = (monthMap[key] || 0) + (h.indicadores?.preco || 0);
           });
           const data = Object.entries(monthMap)
             .map(([label, value]) => ({ label, value, color: CHART.gold }))
@@ -3373,7 +3408,10 @@
 
     $('saveHistoryBtn').addEventListener('click', () => {
       const list = JSON.parse(localStorage.getItem('mi-history') || '[]');
-      list.push(getProjectData());
+      list.push({
+        ...getProjectData(),
+        savedAt: new Date().toISOString()
+      });
       localStorage.setItem('mi-history', JSON.stringify(list));
       renderHistory();
       alert('Projeto salvo no histórico local.');
@@ -3546,6 +3584,7 @@
       if (data.meta) {
         if ($('empresaNome')) $('empresaNome').value = data.meta.empresaNome || $('empresaNome').value;
         if ($('empresaContato')) $('empresaContato').value = data.meta.empresaContato || $('empresaContato').value;
+        if ($('empresaEndereco')) $('empresaEndereco').value = data.meta.empresaEndereco || $('empresaEndereco').value;
         if ($('validadeDias')) $('validadeDias').value = data.meta.validadeDias ?? $('validadeDias').value;
       }
       state.items = Array.isArray(data.items) ? data.items : [];
@@ -3578,7 +3617,10 @@
     const _brandLogo = $('brandLogoImg');
     if (_brandLogo) _brandLogo.src = JL_LOGO_DATA_URL;
     const _logoPreview = $('logoPreview');
-    if (_logoPreview) _logoPreview.src = JL_LOGO_DATA_URL;
+    if (_logoPreview) {
+      _logoPreview.src = JL_LOGO_DATA_URL;
+      _logoPreview.style.display = 'block';
+    }
 
     /* ═══════════════════════════════════════════════════════════
        ONDA 3 · CAMADA SUPABASE
@@ -3628,9 +3670,19 @@
       async save(projectData, kpis, opts = {}) {
         if (!cloudState.user) throw new Error('Login necessário para salvar na nuvem');
         const meta = projectData.meta || {};
-        const rawStatus = (meta.status || 'orcamento').toLowerCase().replace(/\s+/g, '_').replace(/[^a-z_]/g, '');
-        const validStatuses = ['orcamento','aprovado','producao','entregue','cancelado'];
-        const status = validStatuses.find(s => rawStatus.includes(s)) || 'orcamento';
+        const rawStatus = (meta.status || 'orcamento')
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/\s+/g, '_')
+          .replace(/[^a-z_]/g, '');
+
+        let status = 'orcamento';
+        if (rawStatus.includes('aprovado')) status = 'aprovado';
+        else if (rawStatus.includes('producao')) status = 'producao';
+        else if (rawStatus.includes('entregue')) status = 'entregue';
+        else if (rawStatus.includes('cancelado')) status = 'cancelado';
+        else status = 'orcamento';
 
         const row = {
           user_id: cloudState.user.id,
